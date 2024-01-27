@@ -227,6 +227,8 @@ public class Baby : MonoBehaviour
 
     }
 
+    private void 
+
 
     public void AddFrustration(float frustration)
     {
