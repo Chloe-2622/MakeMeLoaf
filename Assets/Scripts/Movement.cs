@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class Movement : MonoBehaviour
 {
+
     [Header("Miscelionous")]
     [SerializeField] Camera cam;
 
@@ -20,12 +21,15 @@ public class Movement : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float drag;
     [SerializeField] float maxSpeed;
+    private Vector3 movement;
 
     [Header("Cam Movement")]
     [SerializeField] private float sensi;
     private float baseCamHeight;
     [SerializeField] private float NodeSpeed;
     [SerializeField] private float NodeSize;
+    private Vector2 mouse;
+    private bool DebugFocus = true;
 
 
     [Header("Ground check")]
@@ -48,7 +52,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         // deplacement
-        Vector3 movement = MoveDir(moveInput.action.ReadValue<Vector2>());
+        movement = MoveDir(moveInput.action.ReadValue<Vector2>());
 
         // anti patinoire
         isGrounded = Physics.Raycast(transform.position, Vector3.down, height + 0.2f, whatIsGround);
@@ -63,7 +67,8 @@ public class Movement : MonoBehaviour
 
         // rotation cam
 
-        Vector2 mouse = lookInput.action.ReadValue<Vector2>();
+        if (Input.GetKeyDown(KeyCode.Escape)) DebugFocus = !DebugFocus;
+        if(DebugFocus) mouse = lookInput.action.ReadValue<Vector2>();
         transform.Rotate(Vector3.up, mouse.x * sensi / 100, Space.World);
         cam.transform.Rotate(Vector3.right, mouse.y * sensi / 100, Space.Self);
 
@@ -76,7 +81,7 @@ public class Movement : MonoBehaviour
         else
         {
             Vector3 pos = cam.transform.localPosition;
-            pos.y = pos.y * 0.9f + baseCamHeight*0.1f;
+            pos.y = pos.y * 0.999f + baseCamHeight*0.001f;
             cam.transform.localPosition = pos;
         }
 
