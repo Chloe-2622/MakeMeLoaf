@@ -12,17 +12,21 @@ public class ClientAgentScript : MonoBehaviour
     [SerializeField] public Vector3 intermediatePos2;
     [SerializeField] public Rect possibleWaitPosition;
 
-    [SerializeField] public float speed = 1.0f;
+    [SerializeField] public float speed = 1.5f;
 
     //DEBUG
-    public IEnumerator Start()
+    public void Start()
     {
         transform.position = spawnPosition;
 
+        for(int i = 0; i < 5; i++)
+        {
+            transform.GetChild(i).GetComponent<SkinnedMeshRenderer>().material.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0, 1.0f));
+        }
+        
+
         //Call clientprocess and after 30 seconds, set isWaiting to false
         StartCoroutine(ClientProcess());
-        yield return new WaitForSeconds(30);
-        isWaiting = false;
     }
     
 

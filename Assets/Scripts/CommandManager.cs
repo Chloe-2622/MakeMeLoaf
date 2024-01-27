@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CommandManager : MonoBehaviour
@@ -24,6 +25,7 @@ public class CommandManager : MonoBehaviour
     {
         public Product product;
         public float time;
+        public ClientAgentScript client;
     }
 
     [SerializeField] private int maxCommands = 5;
@@ -35,6 +37,10 @@ public class CommandManager : MonoBehaviour
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
+
+    [SerializeField] private ClientAgentScript clientAgentPrefab;
+
+    public float clientPatience = 1.0f;
 
     private void Awake()
     {
@@ -55,38 +61,42 @@ public class CommandManager : MonoBehaviour
 
         UpdateDisplay();
 
-        //DEBUG
 
-        Command command = new Command();
-        command.product = Product.PAIN_CEREAL;
-        command.time = 100;
-        TryAddNewCommand(command);
+        StartCoroutine(ClientGenerationCoroutine());
+    }
 
-        Command command2 = new Command();
-        command2.product = Product.BAGUETTE;
-        command2.time = 50;
-        TryAddNewCommand(command2);
+    private IEnumerator ClientGenerationCoroutine()
+    {
+        //Instantiate clients randomly, not more than 5 clients at the same time, their duration time is random and can be upgraded with the upgrade system
+        while (true)
+        {
+            if (currentCommands < maxCommands)
+            {
+                ClientAgentScript client = Instantiate(clientAgentPrefab);
+                client.transform.position = client.spawnPosition;
+                //Randomize client 
+                client.isWaiting = true;
+                client.GetComponent<Animator>().SetFloat("walkingFactor", 1.0f);
+                client.StartCoroutine(client.ClientProcess());
 
-        Command command3 = new Command();
-        command3.product = Product.PAIN_DE_MIE;
-        command3.time = 70;
-        TryAddNewCommand(command3);
+                yield return new WaitForSeconds(5.0f);
 
-        Command command4 = new Command();
-        command4.product = Product.ECLAIR;
-        command4.time = 30;
-        TryAddNewCommand(command4);
-        Command command5 = new Command();
-        command5.product = Product.CROISSANT;
-        command5.time = 10;
-        TryAddNewCommand(command5);
+                //Randomize client patience
+                float duration = UnityEngine.Random.Range(60.0f, 120.0f) * clientPatience;
+                Command command = new Command();
+                command.time = duration;
+                command.product = (Product)UnityEngine.Random.Range(0, 6);
+                command.client = client;
 
-        Command command6 = new Command();
-        command6.product = Product.PAIN_CHOCOLAT;
-        command6.time = 20;
-        TryAddNewCommand(command6);
-
-        UpdateDisplay();
+                TryAddNewCommand(command);
+                
+                yield return new WaitForSeconds(UnityEngine.Random.Range(20.0f, 40.0f));
+            }
+            else
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(10.0f, 20.0f));
+            }
+        }
 
     }
 
@@ -132,7 +142,7 @@ public class CommandManager : MonoBehaviour
         for (int i = 0; i < commands.Length; i++)
         {
             commands[i].time -= Time.deltaTime;
-            if (commands[i].time <= 0)
+            if (commands[i].time < 0)
             {
                 //If the time is less than 0, remove the command
                 ClearCommand(i);
@@ -146,7 +156,10 @@ public class CommandManager : MonoBehaviour
 
     private void ClearCommand(int i)
     {
+        if (commands[i].client == null) return;
+
         //Remove command of index i
+        commands[i].client.isWaiting = false;
         commands[i].time = 0;
         commands[i].product = Product.NONE;
         currentCommands--;
