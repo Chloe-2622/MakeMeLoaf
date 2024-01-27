@@ -311,11 +311,11 @@ MonoBehaviour:
   playerCollider: {fileID: 3900869959222521636}
   moveInput: {fileID: 8302763230067029492, guid: fec6fe869171c13449755852834ccb13, type: 3}
   lookInput: {fileID: -2548339046391342230, guid: fec6fe869171c13449755852834ccb13, type: 3}
-  speed: 15
+  speed: 5
   drag: 5
-  maxSpeed: 8
+  maxSpeed: 3
   sensi: 10
-  NodeSpeed: 25
+  NodeSpeed: 1
   NodeSize: 0.05
   whatIsGround:
     serializedVersion: 2
@@ -349,4 +349,3 @@ MonoBehaviour:
   takeInput: {fileID: -59752880228200583, guid: fec6fe869171c13449755852834ccb13, type: 3}
   cam: {fileID: 1221768254860161287}
   handPostion: {x: 0, y: 0, z: 1.5}
-  joint: {fileID: 0}
