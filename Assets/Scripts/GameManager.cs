@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool hasDayStarted;
     public bool hasDayEnded;
     public bool isTimePassing;
+    public float playerRange;
 
 
 

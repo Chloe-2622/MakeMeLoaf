@@ -7,26 +7,23 @@ public class Select : MonoBehaviour
 {
     private RaycastHit hit;
     [SerializeField] private Camera cam;
-    [SerializeField] private float maxDistance;
     private GameObject selectedO;
     private Selectable selected;
     private Outline outline;
     [SerializeField] private TextMeshProUGUI labelUI;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+
+    private GameManager gM = GameManager.Instance;
 
     // Update is called once per frame
     void Update()
     {
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, maxDistance)
+        Debug.Log(gM);
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
          && (GameObject.ReferenceEquals(hit.transform.gameObject, selectedO) || selectedO == null)
-         && hit.transform.gameObject.CompareTag("Selectionable"))
+         && hit.transform.gameObject.TryGetComponent<Selectable>(out selected))
         {
             selectedO = hit.transform.gameObject;
-            selected = selectedO.GetComponent<Selectable>();
             outline = selectedO.GetComponent<Outline>();
             outline.enabled = true;
             labelUI.text = selected.label;
