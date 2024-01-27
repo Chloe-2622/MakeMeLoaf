@@ -23,9 +23,9 @@ public class Select : MonoBehaviour
     void Update()
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
-         && (GameObject.ReferenceEquals(hit.transform.gameObject, selectedO) || selectedO == null)
          && hit.transform.gameObject.TryGetComponent<Selectable>(out selected))
         {
+            Debug.Log(selected.label);
             selectedO = hit.transform.gameObject;
             outline = selectedO.GetComponent<Outline>();
             outline.enabled = true;
