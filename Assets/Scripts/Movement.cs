@@ -81,8 +81,8 @@ public class Movement : MonoBehaviour
         {
             cam.transform.Rotate(Vector3.left, mouse.y * sensi / 100, Space.Self);
         }*/
-        yaw += mouse.x * sensi / 100;
-        pitch += mouse.y * sensi / 100;
+        yaw += mouse.x * Time.deltaTime * sensi;
+        pitch += mouse.y * Time.deltaTime * sensi;
         pitch = Mathf.Clamp(pitch, -90f, 90f);
         transform.eulerAngles = new Vector3(0, yaw, 0);
         cam.transform.eulerAngles = new Vector3(pitch, yaw, 0);
