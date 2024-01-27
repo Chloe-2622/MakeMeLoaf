@@ -226,6 +226,7 @@ public class Baby : MonoBehaviour
         }
 
     }
+
     public void AddFrustration(float frustration)
     {
         total_frustration += frustration;
