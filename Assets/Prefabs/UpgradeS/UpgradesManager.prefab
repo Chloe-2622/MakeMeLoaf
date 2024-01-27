@@ -47,9 +47,9 @@ MonoBehaviour:
   money: 1000
   totalCost: 0
   babyCalmFactors:
-  - 0
-  - 0
-  - 0
+  - 1
+  - 0.9
+  - 0.8
   babyCalmCosts: 000000001400000032000000
   babyCalm: 0
   babyCalmTitle: Take this and go play elsewhere
@@ -83,6 +83,30 @@ MonoBehaviour:
   clientsMoney: 0
   clientsMoneyTitle: 
   clientsMoneyDescription: 
+  toysCost: 0
+  toys: 0
+  toysTitle: 
+  toysDescription: 
+  camera_1Cost: 0
+  camera_1: 0
+  camera_1Title: 
+  camera_1Description: 
+  camera_2Cost: 0
+  camera_2: 0
+  camera_2Title: 
+  camera_2Description: 
+  camera_3Cost: 0
+  camera_3: 0
+  camera_3Title: 
+  camera_3Description: 
+  bellCost: 0
+  bell: 0
+  bellTitle: 
+  bellDescription: 
+  tabletCost: 0
+  tablet: 0
+  tabletTitle: 
+  tabletDescription: 
   costUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
