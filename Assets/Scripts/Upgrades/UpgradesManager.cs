@@ -337,7 +337,10 @@ public class UpgradesManager : MonoBehaviour
     // Money
     public int getMoney() { return money; }
 
-    public void addToCostToPay(int costDelta) { totalCost += costDelta; costUpdateEvent.Invoke(); }
+    public void addMoney(int moneyDelta) { money += moneyDelta;}
+
+    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke(); }
+
 
     public int getTotalCost() { return totalCost; }
 

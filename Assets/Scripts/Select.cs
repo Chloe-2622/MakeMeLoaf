@@ -23,7 +23,6 @@ public class Select : MonoBehaviour
     void Update()
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
-         && (GameObject.ReferenceEquals(hit.transform.gameObject, selectedO) || selectedO == null)
          && hit.transform.gameObject.TryGetComponent<Selectable>(out selected))
         {
             selectedO = hit.transform.gameObject;
