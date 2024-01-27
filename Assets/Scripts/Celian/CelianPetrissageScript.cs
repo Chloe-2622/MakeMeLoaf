@@ -83,30 +83,7 @@ public class CelianPetrissageScript : MonoBehaviour
         script.SetInstantiatingScript(this);
     }
 
-    public Vector3 GetRandomPosition()
-    {
-        // Get the screen boundaries in pixels
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
-
-        // Define the buffer distance from the edges
-        float bufferDistance = 100f;
-
-        // Calculate the range of valid positions
-        float minX = bufferDistance;
-        float maxX = screenWidth - bufferDistance;
-        float minY = bufferDistance;
-        float maxY = screenHeight - bufferDistance;
-
-        // Generate random x and y coordinates within the valid range
-        float randomX = Random.Range(minX, maxX);
-        float randomY = Random.Range(minY, maxY);
-
-        // Convert screen coordinates to world coordinates (assuming z = 0)
-        Vector3 randomPosition = new Vector3(randomX, randomY, 0f);
-        // Return the random position
-        return randomPosition;
-    }
+    
 
     public void decrHowManyOsu(){
         howManyOsu--;
