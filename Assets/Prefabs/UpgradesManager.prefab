@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2664551176364917591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2148919885972729745}
+  - component: {fileID: 3800540932010624379}
+  m_Layer: 0
+  m_Name: UpgradesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2148919885972729745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664551176364917591}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 273.73837, y: 701.0835, z: -447.6239}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3800540932010624379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2664551176364917591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1ae9e12b88fd74297265955a36481f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: 100
+  totalCost: 0
+  babyCalmFactors:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  babyCalmCosts: 0000000014000000320000003c00000078000000
+  babyCalm: 0
+  babyCalmTitle: 
+  babyCalmDescription: 
+  playerHumorFactors:
+  - 0
+  playerHumorCosts: 00000000
+  playerHumor: 0
+  playerHumorTitle: 
+  playerHumorDescription: 
+  furnaceSpeedFactors:
+  - 0
+  furnaceSpeedCosts: 00000000
+  furnaceSpeed: 0
+  furnaceSpeedTitle: 
+  furnaceSpeedDescription: 
+  clientsPatienceFactors:
+  - 0
+  clientsPatienceCosts: 00000000
+  clientsPatience: 0
+  clientsPatienceTitle: 
+  clientsPatienceDescription: 
+  clientsMoneyFactors:
+  - 0
+  clientsMoneyCosts: 00000000
+  clientsMoney: 0
+  clientsMoneyTitle: 
+  clientsMoneyFescription: 
+  goldUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
