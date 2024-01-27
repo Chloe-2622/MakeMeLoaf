@@ -64,7 +64,7 @@ public class Baby : MonoBehaviour
     void Update()
     {
         frustration_factor = total_frustration / (1 + total_frustration);
-        Debug.Log(frustration_factor / gameOver_frustration_factor);
+        // Debug.Log(frustration_factor / gameOver_frustration_factor);
         babyImage.transform.position = Vector3.Lerp(babyImage.transform.position, new Vector3(babyBarMinX, babyImage.transform.position.y, babyImage.transform.position.z), frustration_factor / gameOver_frustration_factor);
 
         if (gameManager.timeOfDay == activityLevel_1) { activityLevel = 1; }
