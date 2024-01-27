@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
         if(OnSlope()) rb.AddForce(SlopeMoveDir(movement) * speed);
         else rb.AddForce(movement*speed);
         rb.velocity = rb.velocity.normalized * Mathf.Clamp(rb.velocity.magnitude, 0, maxSpeed);
-        rb.useGravity = !OnSlope();
+        // rb.useGravity = !OnSlope();
 
         // rotation cam
 
