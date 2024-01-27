@@ -42,6 +42,8 @@ public class Movement : MonoBehaviour
 
 
     private float totalDist = 0;
+    private float yaw = 0;
+    private float pitch = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -73,9 +75,17 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape)) DebugFocus = !DebugFocus;
         if(DebugFocus) mouse = lookInput.action.ReadValue<Vector2>();
-        transform.Rotate(Vector3.up, mouse.x * sensi / 100, Space.World);
+        /*transform.Rotate(Vector3.up, mouse.x * sensi / 100, Space.World);
         cam.transform.Rotate(Vector3.right, mouse.y * sensi / 100, Space.Self);
-        if(!(cam.transform.localEulerAngles.x < 65 || cam.transform.localEulerAngles.x > 295)) cam.transform.Rotate(Vector3.left, mouse.y * sensi / 100, Space.Self);
+        if (!(cam.transform.localEulerAngles.x < 65 || cam.transform.localEulerAngles.x > 295))
+        {
+            cam.transform.Rotate(Vector3.left, mouse.y * sensi / 100, Space.Self);
+        }*/
+        yaw += mouse.x * sensi / 100;
+        pitch += mouse.y * sensi / 100;
+        pitch = Mathf.Clamp(pitch, -90f, 90f);
+        transform.eulerAngles = new Vector3(0, yaw, 0);
+        cam.transform.eulerAngles = new Vector3(pitch, yaw, 0);
 
         if (rb.velocity.magnitude != 0f)
         {
