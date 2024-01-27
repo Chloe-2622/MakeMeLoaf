@@ -44,42 +44,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1ae9e12b88fd74297265955a36481f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100
+  money: 1000
   totalCost: 0
   babyCalmFactors:
   - 0
   - 0
   - 0
-  - 0
-  - 0
-  babyCalmCosts: 0000000014000000320000003c00000078000000
+  babyCalmCosts: 000000001400000032000000
   babyCalm: 0
-  babyCalmTitle: 
-  babyCalmDescription: 
+  babyCalmTitle: Take this and go play elsewhere
+  babyCalmDescription: The baby takes more time to stress out
   playerHumorFactors:
   - 0
-  playerHumorCosts: 00000000
+  - 0
+  playerHumorCosts: 0000000000000000
   playerHumor: 0
   playerHumorTitle: 
   playerHumorDescription: 
   furnaceSpeedFactors:
   - 0
-  furnaceSpeedCosts: 00000000
+  - 0
+  furnaceSpeedCosts: 0000000000000000
   furnaceSpeed: 0
   furnaceSpeedTitle: 
   furnaceSpeedDescription: 
   clientsPatienceFactors:
   - 0
-  clientsPatienceCosts: 00000000
+  - 0
+  clientsPatienceCosts: 0000000000000000
   clientsPatience: 0
   clientsPatienceTitle: 
   clientsPatienceDescription: 
   clientsMoneyFactors:
   - 0
-  clientsMoneyCosts: 00000000
+  - 20
+  - 50
+  clientsMoneyCosts: 000000001400000032000000
   clientsMoney: 0
   clientsMoneyTitle: 
-  clientsMoneyFescription: 
-  goldUpdateEvent:
+  clientsMoneyDescription: 
+  costUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
