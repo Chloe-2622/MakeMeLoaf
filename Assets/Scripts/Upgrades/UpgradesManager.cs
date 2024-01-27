@@ -123,7 +123,7 @@ public class UpgradesManager : MonoBehaviour
                 babyCalm = value;
                 break;
             case MultipleUpgradesType.PlayerHumor:
-                babyCalm = value;
+                playerHumor = value;
                 break;
             case MultipleUpgradesType.FurnaceSpeed:
                 furnaceSpeed = value;
@@ -337,9 +337,11 @@ public class UpgradesManager : MonoBehaviour
     // Money
     public int getMoney() { return money; }
 
-    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke(); }
+    public void addToCostToPay(int costDelta) { totalCost += costDelta; costUpdateEvent.Invoke(); }
 
     public int getTotalCost() { return totalCost; }
+
+    public void deduceCost() { money -= totalCost; totalCost = 0;  costUpdateEvent.Invoke(); }
 
 
     // Debug
