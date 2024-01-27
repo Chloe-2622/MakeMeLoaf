@@ -170,6 +170,7 @@ public class UpgradesSliders : MonoBehaviour
     public void applyUpgardes()
     {
         Debug.Log("apply upgrades");
+        Debug.Log(upgradeType + " " + previewUpgradeValue);
         upgradesManager.setUpgradeValue(upgradeType, previewUpgradeValue);
         setButtonsActive(false);
         StartCoroutine(FillSlider());
@@ -203,13 +204,9 @@ public class UpgradesSliders : MonoBehaviour
     // Buttons management
     public void checkNextUpgrades()
     {
-        //Debug.Log(4);
         if (previewUpgradeValue != numberOfUpgrades)
         {
             setPlusButtonActive(upgradesManager.getMoney() - upgradesManager.getTotalCost() - upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue + 1) >= 0);
-            Debug.Log(this + upgradesManager.getMoney().ToString());
-            Debug.Log(this + upgradesManager.getTotalCost().ToString());
-            Debug.Log(this + upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue + 1).ToString());
 
             nextUpgradeCost.text = "Next upgrade : " + upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue + 1).ToString() + " G";
         }
