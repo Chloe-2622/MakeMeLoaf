@@ -53,7 +53,7 @@ public class UpgradesManager : MonoBehaviour
     [SerializeField] private List<int> clientsMoneyCosts;
     [SerializeField] private int clientsMoney = 0;
     [SerializeField] private string clientsMoneyTitle;
-    [SerializeField] private string clientsMoneyFescription;
+    [SerializeField] private string clientsMoneyDescription;
 
 
     [HideInInspector] public UnityEvent costUpdateEvent;
@@ -64,6 +64,8 @@ public class UpgradesManager : MonoBehaviour
         if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
+
+        if (costUpdateEvent == null ) { costUpdateEvent = new UnityEvent(); }
 
         checkErrors();
     }
@@ -103,19 +105,14 @@ public class UpgradesManager : MonoBehaviour
         {
             case MultipleUpgradesType.BabyCalm:
                 return babyCalm;
-                break;
             case MultipleUpgradesType.PlayerHumor:
                 return playerHumor;
-                break;
             case MultipleUpgradesType.FurnaceSpeed:
                 return furnaceSpeed;
-                break;
             case MultipleUpgradesType.ClientsPatience:
                 return clientsPatience;
-                break;
             case MultipleUpgradesType.ClientsMoney:
                 return clientsMoney;
-                break;
         }
         return 0;
     }
@@ -126,19 +123,14 @@ public class UpgradesManager : MonoBehaviour
         {
             case MultipleUpgradesType.BabyCalm:
                 return babyCalmFactors.Count;
-                break;
             case MultipleUpgradesType.PlayerHumor:
                 return playerHumorFactors.Count;
-                break;
             case MultipleUpgradesType.FurnaceSpeed:
                 return furnaceSpeedFactors.Count;
-                break;
             case MultipleUpgradesType.ClientsPatience:
                 return clientsPatienceFactors.Count;
-                break;
             case MultipleUpgradesType.ClientsMoney:
                 return clientsMoneyFactors.Count;
-                break;
         }
         return 0;
     }
@@ -149,23 +141,58 @@ public class UpgradesManager : MonoBehaviour
         {
             case MultipleUpgradesType.BabyCalm:
                 return babyCalmCosts[nextUpgrade];
-                break;
             case MultipleUpgradesType.PlayerHumor:
                 return playerHumorCosts[nextUpgrade];
-                break;
             case MultipleUpgradesType.FurnaceSpeed:
                 return furnaceSpeedCosts[nextUpgrade];
-                break;
             case MultipleUpgradesType.ClientsPatience:
                 return clientsPatienceCosts[nextUpgrade];
-                break;
             case MultipleUpgradesType.ClientsMoney:
                 return clientsMoneyCosts[nextUpgrade];
-                break;
         }
         return 0;
     }
 
+    public string getUpgradeTitle(MultipleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case MultipleUpgradesType.BabyCalm:
+                return babyCalmTitle;
+                break;
+            case MultipleUpgradesType.PlayerHumor:
+                return playerHumorTitle;
+                break;
+            case MultipleUpgradesType.FurnaceSpeed:
+                return furnaceSpeedTitle;
+                break;
+            case MultipleUpgradesType.ClientsPatience:
+                return clientsPatienceTitle;
+                break;
+            case MultipleUpgradesType.ClientsMoney:
+                return clientsMoneyTitle;
+                break;
+        }
+        return null;
+    }
+
+    public string getUpgradeDescription(MultipleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case MultipleUpgradesType.BabyCalm:
+                return babyCalmDescription;
+            case MultipleUpgradesType.PlayerHumor:
+                return playerHumorDescription;
+            case MultipleUpgradesType.FurnaceSpeed:
+                return furnaceSpeedDescription;
+            case MultipleUpgradesType.ClientsPatience:
+                return clientsPatienceDescription;
+            case MultipleUpgradesType.ClientsMoney:
+                return clientsMoneyDescription;
+        }
+        return null;
+    }
 
     // Money
     public int getMoney() { return money; }

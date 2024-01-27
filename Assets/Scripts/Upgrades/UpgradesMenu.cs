@@ -11,15 +11,22 @@ public class UpgradesMenu : MonoBehaviour
     [SerializeField] private Color costColor;
 
     [Header("Sliders")]
-    [SerializeField] private List<UpgardeSlider> sliders;
+    [SerializeField] private GameObject slidersObject;
 
     private UpgradesManager upgradesManager;
+    private List<UpgardeSlider> slidersList = new List<UpgardeSlider>();
+
 
     public void OnEnable()
     {
         upgradesManager = UpgradesManager.Instance;
 
         upgradesManager.costUpdateEvent.AddListener(showGoldAndCost);
+
+        for (int i = 0; i < slidersObject.transform.childCount; i++)
+        {
+            slidersList.Add(slidersObject.transform.GetChild(i).gameObject.GetComponent<UpgardeSlider>());
+        }
     }
 
     public void OnDisable()
@@ -29,7 +36,7 @@ public class UpgradesMenu : MonoBehaviour
 
     public void startGame()
     {
-        foreach(UpgardeSlider slider in sliders) { Debug.Log("oui");  slider.applyUpgardes(); }
+        foreach(UpgardeSlider slider in slidersList) { Debug.Log("oui");  slider.applyUpgardes(); }
     }
 
     public void showGoldAndCost()
