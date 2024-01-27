@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     {
         if (hasDayStarted && !isTimePassing)
         {
-            StartCoroutine(PassTime());
+            // StartCoroutine(PassTime());
             isTimePassing = true;
         }
     }
