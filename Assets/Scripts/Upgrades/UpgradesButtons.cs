@@ -63,18 +63,17 @@ public class UpgradesButtons : MonoBehaviour
 
     public void selectUpgrade()
     {
-        if (!isPreviewOn)
+        isPreviewOn = !isPreviewOn;
+        if (isPreviewOn)
         {
             upgradesManager.addToCostToPay(upgradesManager.getUpgradeCost(upgradeType));
         }
         else
         {
             upgradesManager.addToCostToPay(-upgradesManager.getUpgradeCost(upgradeType));
-            buttonImage.color = availableColor;
         }
-        isPreviewOn = !isPreviewOn;
+        
         setButtonColor();
-        checkUpgrades();
     }
 
     public void applyUpgardes()
