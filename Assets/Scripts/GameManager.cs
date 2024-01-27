@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public float frustration_time_factor;
 
+    public float debugTimeScale;
+
     // Instance statique du GameManager
     public static GameManager Instance { get; private set; }
 
@@ -36,7 +38,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Détruisez les doublons
         }
 
+
+        StartCoroutine(PassTime());
         hasDayStarted = true;
+
+        Time.timeScale = debugTimeScale;
     }
 
 
