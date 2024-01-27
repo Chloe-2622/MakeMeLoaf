@@ -1,17 +1,25 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class osuButtonScript : MonoBehaviour
 {
     [SerializeField] public float fadeDuration = 1f; // Duration of the fade in seconds
     [SerializeField] public float growDuration = 0.25f; // Duration of the growth animation in seconds
     [SerializeField] public Vector3 targetScale = new Vector3(1f, 1f, 1f); // Target scale for the button
+    
+    [SerializeField] private Sprite normalSkin; // Normal skin for the button
+    [SerializeField] private Sprite alternateSkin;
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     private bool fading = false;
-    private bool growing = true;
 
     private CelianPetrissageScript instantiatingScript;
+    private SpriteRenderer spriteRenderer;
+
+
+    [SerializeField] public Image circleImage;
+    [SerializeField] public Sprite osuImage;
 
     // Method to receive the reference to the instantiating script
     public void SetInstantiatingScript(CelianPetrissageScript script)
@@ -24,6 +32,10 @@ public class osuButtonScript : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
 
+
+        if (Random.Range(0,100) == 0) {
+            SetOsuSkin();
+        }
         // Set initial scale to zero
         rectTransform.localScale = Vector3.zero;
 
@@ -66,5 +78,10 @@ public class osuButtonScript : MonoBehaviour
     public void OnButtonPressed()
     {
         fading = true;
+    }
+
+    public void SetOsuSkin()
+    {
+        circleImage.sprite = osuImage;
     }
 }
