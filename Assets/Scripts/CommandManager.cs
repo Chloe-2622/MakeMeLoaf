@@ -29,6 +29,9 @@ public class CommandManager : MonoBehaviour
     }
 
     [SerializeField] private int maxCommands = 5;
+    [SerializeField] private int dayDuration = 600;
+    [SerializeField] private int dayStartHour = 6;
+    [SerializeField] private int dayEndHour = 18;
 
     private Command[] commands;
     private int currentCommands = 0;
@@ -37,10 +40,14 @@ public class CommandManager : MonoBehaviour
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
+    [SerializeField] private TMPro.TextMeshProUGUI dayTimeText;
+    [SerializeField] private TMPro.TextMeshProUGUI moneyText;
 
     [SerializeField] private ClientAgentScript clientAgentPrefab;
 
     public float clientPatience = 1.0f;
+
+    private float currentDayTime = 0;
 
     private void Awake()
     {
@@ -59,17 +66,20 @@ public class CommandManager : MonoBehaviour
             commands[i].product = Product.NONE;
         }
 
+        beginTime = Time.time;
         UpdateDisplay();
 
 
         StartCoroutine(ClientGenerationCoroutine());
     }
-
+    float beginTime;
     private IEnumerator ClientGenerationCoroutine()
     {
+        beginTime = Time.time;
         //Instantiate clients randomly, not more than 5 clients at the same time, their duration time is random and can be upgraded with the upgrade system
-        while (true)
+        while (Time.time < beginTime + dayDuration)
         {
+            currentDayTime = Time.time - beginTime;
             if (currentCommands < maxCommands)
             {
                 ClientAgentScript client = Instantiate(clientAgentPrefab);
@@ -98,6 +108,22 @@ public class CommandManager : MonoBehaviour
             }
         }
 
+        //End of the day when every Command is empty
+        while (currentCommands > 0)
+        {
+            yield return null;
+        }
+
+        //End of the day wait 5 seconds and call EndDay
+        yield return new WaitForSeconds(5.0f);
+        EndDay();
+
+
+    }
+
+    private void EndDay()
+    {
+        throw new NotImplementedException(); //TODO
     }
 
     //RETURN True if the command is added, false if the command is not added
@@ -138,6 +164,7 @@ public class CommandManager : MonoBehaviour
 
     private void Update()
     {
+        currentDayTime = Time.time - beginTime;
         //Decrease time of all commands
         for (int i = 0; i < commands.Length; i++)
         {
@@ -172,6 +199,10 @@ public class CommandManager : MonoBehaviour
 
     private void UpdateDisplay()
     {
+        int hours = (int)(currentDayTime / (dayEndHour - dayStartHour) + dayStartHour);
+        int min = (int)(((currentDayTime / (dayEndHour - dayStartHour) + dayStartHour) - hours) * 60.0f);
+        dayTimeText.text = hours.ToString("00") + ":" + min.ToString("00");
+
         for (int i = 0; i < commands.Length; i++)
         {
             if (commands[i].time > 0 && commands[i].product != Product.NONE)
