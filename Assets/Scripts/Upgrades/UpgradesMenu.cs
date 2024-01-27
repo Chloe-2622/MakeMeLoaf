@@ -36,6 +36,11 @@ public class UpgradesMenu : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        showGoldAndCost();
+    }
+
     public void OnDisable()
     {
         upgradesManager.costUpdateEvent.RemoveAllListeners();

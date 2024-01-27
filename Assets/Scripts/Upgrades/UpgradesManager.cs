@@ -115,11 +115,6 @@ public class UpgradesManager : MonoBehaviour
         checkErrors();
     }
 
-    public void Start()
-    {
-        costUpdateEvent.Invoke();
-    }
-
     public void setUpgradeValue(MultipleUpgradesType upgradeType, int value)
     {
         switch (upgradeType)
@@ -342,7 +337,7 @@ public class UpgradesManager : MonoBehaviour
     // Money
     public int getMoney() { return money; }
 
-    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke();  Debug.Log(totalCost); }
+    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke(); }
 
     public int getTotalCost() { return totalCost; }
 

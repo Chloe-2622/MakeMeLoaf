@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CommandManager : MonoBehaviour
@@ -24,9 +25,13 @@ public class CommandManager : MonoBehaviour
     {
         public Product product;
         public float time;
+        public ClientAgentScript client;
     }
 
     [SerializeField] private int maxCommands = 5;
+    [SerializeField] private int dayDuration = 600;
+    [SerializeField] private int dayStartHour = 6;
+    [SerializeField] private int dayEndHour = 18;
 
     private Command[] commands;
     private int currentCommands = 0;
@@ -35,6 +40,14 @@ public class CommandManager : MonoBehaviour
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
+    [SerializeField] private TMPro.TextMeshProUGUI dayTimeText;
+    [SerializeField] private TMPro.TextMeshProUGUI moneyText;
+
+    [SerializeField] private ClientAgentScript clientAgentPrefab;
+
+    public float clientPatience = 1.0f;
+
+    private float currentDayTime = 0;
 
     private void Awake()
     {
@@ -53,41 +66,64 @@ public class CommandManager : MonoBehaviour
             commands[i].product = Product.NONE;
         }
 
+        beginTime = Time.time;
         UpdateDisplay();
 
-        //DEBUG
 
-        Command command = new Command();
-        command.product = Product.PAIN_CEREAL;
-        command.time = 100;
-        TryAddNewCommand(command);
+        StartCoroutine(ClientGenerationCoroutine());
+    }
+    float beginTime;
+    private IEnumerator ClientGenerationCoroutine()
+    {
+        beginTime = Time.time;
+        //Instantiate clients randomly, not more than 5 clients at the same time, their duration time is random and can be upgraded with the upgrade system
+        while (Time.time < beginTime + dayDuration)
+        {
+            currentDayTime = Time.time - beginTime;
+            if (currentCommands < maxCommands)
+            {
+                ClientAgentScript client = Instantiate(clientAgentPrefab);
+                client.transform.position = client.spawnPosition;
+                //Randomize client 
+                client.isWaiting = true;
+                client.GetComponent<Animator>().SetFloat("walkingFactor", 1.0f);
+                client.StartCoroutine(client.ClientProcess());
 
-        Command command2 = new Command();
-        command2.product = Product.BAGUETTE;
-        command2.time = 50;
-        TryAddNewCommand(command2);
+                yield return new WaitForSeconds(5.0f);
 
-        Command command3 = new Command();
-        command3.product = Product.PAIN_DE_MIE;
-        command3.time = 70;
-        TryAddNewCommand(command3);
+                //Randomize client patience
+                float duration = UnityEngine.Random.Range(60.0f, 120.0f) * clientPatience;
+                Command command = new Command();
+                command.time = duration;
+                command.product = (Product)UnityEngine.Random.Range(0, 6);
+                command.client = client;
 
-        Command command4 = new Command();
-        command4.product = Product.ECLAIR;
-        command4.time = 30;
-        TryAddNewCommand(command4);
-        Command command5 = new Command();
-        command5.product = Product.CROISSANT;
-        command5.time = 10;
-        TryAddNewCommand(command5);
+                TryAddNewCommand(command);
+                
+                yield return new WaitForSeconds(UnityEngine.Random.Range(20.0f, 40.0f));
+            }
+            else
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(10.0f, 20.0f));
+            }
+        }
 
-        Command command6 = new Command();
-        command6.product = Product.PAIN_CHOCOLAT;
-        command6.time = 20;
-        TryAddNewCommand(command6);
+        //End of the day when every Command is empty
+        while (currentCommands > 0)
+        {
+            yield return null;
+        }
 
-        UpdateDisplay();
+        //End of the day wait 5 seconds and call EndDay
+        yield return new WaitForSeconds(5.0f);
+        EndDay();
 
+
+    }
+
+    private void EndDay()
+    {
+        throw new NotImplementedException(); //TODO
     }
 
     //RETURN True if the command is added, false if the command is not added
@@ -128,11 +164,12 @@ public class CommandManager : MonoBehaviour
 
     private void Update()
     {
+        currentDayTime = Time.time - beginTime;
         //Decrease time of all commands
         for (int i = 0; i < commands.Length; i++)
         {
             commands[i].time -= Time.deltaTime;
-            if (commands[i].time <= 0)
+            if (commands[i].time < 0)
             {
                 //If the time is less than 0, remove the command
                 ClearCommand(i);
@@ -146,7 +183,10 @@ public class CommandManager : MonoBehaviour
 
     private void ClearCommand(int i)
     {
+        if (commands[i].client == null) return;
+
         //Remove command of index i
+        commands[i].client.isWaiting = false;
         commands[i].time = 0;
         commands[i].product = Product.NONE;
         currentCommands--;
@@ -159,6 +199,10 @@ public class CommandManager : MonoBehaviour
 
     private void UpdateDisplay()
     {
+        int hours = (int)(currentDayTime / (dayEndHour - dayStartHour) + dayStartHour);
+        int min = (int)(((currentDayTime / (dayEndHour - dayStartHour) + dayStartHour) - hours) * 60.0f);
+        dayTimeText.text = hours.ToString("00") + ":" + min.ToString("00");
+
         for (int i = 0; i < commands.Length; i++)
         {
             if (commands[i].time > 0 && commands[i].product != Product.NONE)
