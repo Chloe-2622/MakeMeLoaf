@@ -12,8 +12,19 @@ public class Select : MonoBehaviour
     private Outline outline;
     [SerializeField] private TextMeshProUGUI labelUI;
 
+    public static Select instance;
+
 
     private GameManager gM;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
+
     private void Start()
     {
         gM = GameManager.Instance;
@@ -34,7 +45,7 @@ public class Select : MonoBehaviour
         else if(selectedO != null && outline.enabled) ResetSelection();
     }
 
-    private void ResetSelection()
+    public void ResetSelection()
     {
         labelUI.text = "";
         outline.enabled = false;

@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 531289744}
   - component: {fileID: 531289745}
   - component: {fileID: 531289746}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FinalProductTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
