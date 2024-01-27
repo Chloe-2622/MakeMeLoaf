@@ -26,6 +26,15 @@ public class Craft : MonoBehaviour
 
     [SerializeField] private GameObject eclairPref;
 
+    [Header("prefab final")]
+    [SerializeField] private GameObject pain_cPref;
+    [SerializeField] private GameObject pain_bPref;
+    [SerializeField] private GameObject pain_mPref;
+    [SerializeField] private GameObject croissantPref;
+    [SerializeField] private GameObject pain_chocoPref;
+    [SerializeField] private GameObject charbonPref;
+
+
     public enum CraftType
     {
         Petrin,
