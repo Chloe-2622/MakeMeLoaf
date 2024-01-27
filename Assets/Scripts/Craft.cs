@@ -10,7 +10,21 @@ public class Craft : MonoBehaviour
     private Dictionary<string, string[]> recettes_F = new Dictionary<string, string[]>();
     private Dictionary<string, string[]> recettes_M = new Dictionary<string, string[]>();
 
+    [Header("prefab inter")]
     [SerializeField] private GameObject pate_cPref;
+    [SerializeField] private GameObject pate_bPref;
+    [SerializeField] private GameObject pate_mPref;
+    [SerializeField] private GameObject pate_croissantPref;
+    [SerializeField] private GameObject pate_chouxPref;
+
+    [SerializeField] private GameObject pain_c_cruPref;
+    [SerializeField] private GameObject pain_b_cruPref;
+    [SerializeField] private GameObject pain_m_cruPref;
+    [SerializeField] private GameObject eclair_cruPref;
+    [SerializeField] private GameObject croissant_cruPref;
+    [SerializeField] private GameObject pain_choco_cruPref;
+
+    [SerializeField] private GameObject eclairPref;
 
     public enum CraftType
     {
@@ -25,10 +39,10 @@ public class Craft : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        recettes_P.Add("pate_m", new string[] { "farine_b", "lait", "sucre", "beurre" });
         recettes_P.Add("pate_c", new string[] { "farine_c", "eau" });
         recettes_P.Add("pate_b", new string[] { "farine_b", "eau" });
         recettes_M.Add("pate_croissant", new string[] { "farine_b", "lait", "sucre", "beurre", "oeuf" });
-        recettes_P.Add("pate_m", new string[] { "farine_b", "lait", "sucre", "beurre"});
         recettes_M.Add("pate_choux", new string[] { "farine_b", "eau", "sucre", "beurre"});
 
         recettes_PdT.Add("pain_c_cru", new string[] { "pate_c" });
@@ -113,13 +127,19 @@ public class Craft : MonoBehaviour
                 DeletUsedItem(resultat, recettes_P);
                 break;
             case CraftType.Melange:
-                Debug.Log(FindCraft(recettes_M));
+                resultat = FindCraft(recettes_M);
+                SpawnObject(resultat);
+                DeletUsedItem(resultat, recettes_M);
                 break;
             case CraftType.PlanDeTravail:
-                Debug.Log(FindCraft(recettes_PdT));
+                resultat = FindCraft(recettes_PdT);
+                SpawnObject(resultat);
+                DeletUsedItem(resultat, recettes_PdT);
                 break;
             case CraftType.Four:
-                Debug.Log(FindCraft(recettes_F));
+                resultat = FindCraft(recettes_F);
+                SpawnObject(resultat);
+                DeletUsedItem(resultat, recettes_F);
                 break;
         }
 
@@ -133,6 +153,22 @@ public class Craft : MonoBehaviour
             case "pate_c":
                 Instantiate(pate_cPref, transform.position + Vector3.up, Quaternion.identity);
                 return;
+            case "pate_b":
+                Instantiate(pate_bPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+
+            case "pate_m":
+                Instantiate(pate_mPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+
+            case "pate_croissant":
+                Instantiate(pate_croissantPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+
+            case "pate_choux":
+                Instantiate(pate_chouxPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+
         }
     }
 
