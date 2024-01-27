@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using UnityEngine.U2D;
-using Unity.VisualScripting;
+using UnityEngine.Events;
 
-public class UpgardeSlider : MonoBehaviour
+public class UpgradesSliders : MonoBehaviour
 {
     [SerializeField] UpgradesManager.MultipleUpgradesType upgradeType;
     [SerializeField] float fillTime;
@@ -43,12 +42,12 @@ public class UpgardeSlider : MonoBehaviour
 
     private UpgradesManager upgradesManager;
     private int upgradeValue;
-    private int numberOfUpgrades;    
+    private int numberOfUpgrades;
     private int previewUpgradeValue;
     private float topFillTime;
 
 
-     public void OnDisable()
+    public void OnDisable()
     {
         upgradesManager.costUpdateEvent.RemoveAllListeners();
     }
@@ -77,7 +76,7 @@ public class UpgardeSlider : MonoBehaviour
 
         if (iconSprite != null) { icon.sprite = iconSprite; }
         else { icon.gameObject.SetActive(false); }
-        
+
 
         setAllColors();
 
@@ -101,18 +100,18 @@ public class UpgardeSlider : MonoBehaviour
     }
 
     // Preview Sliders
-    public void increasePreview() 
-    { 
+    public void increasePreview()
+    {
         previewUpgradeValue++;
-        upgradesManager.addToCostToPay(upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue)); 
-        previewUpgrade(); 
+        upgradesManager.addToCostToPay(upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue));
+        previewUpgrade();
     }
 
-    public void decreasePreview() 
-    { 
-        upgradesManager.addToCostToPay(- upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue)); 
-        previewUpgradeValue--; 
-        previewUpgrade(); 
+    public void decreasePreview()
+    {
+        upgradesManager.addToCostToPay(-upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue));
+        previewUpgradeValue--;
+        previewUpgrade();
     }
 
     public void previewUpgrade()
@@ -164,7 +163,7 @@ public class UpgardeSlider : MonoBehaviour
     }
 
     // When upgrade confirms
-    public void applyUpgardes() 
+    public void applyUpgardes()
     {
         Debug.Log("apply upgrades");
         upgradesManager.setUpgradeValue(upgradeType, previewUpgradeValue);
@@ -220,7 +219,7 @@ public class UpgardeSlider : MonoBehaviour
     public void setButtonsActive(bool active) { minusButton.interactable = active; plusButton.interactable = active; }
 
     // Info panel
-    public void showInfo() { infoPanel.SetActive(true);  }
+    public void showInfo() { infoPanel.SetActive(true); }
     public void hideInfo() { infoPanel.SetActive(false); }
 
     // Colors

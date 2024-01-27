@@ -16,6 +16,15 @@ public class UpgradesManager : MonoBehaviour
         ClientsPatience = 3,
         ClientsMoney = 4
     }
+    public enum SingleUpgradesType
+    {
+        Toys = 0,
+        Camera_1 = 1,
+        Camera_2 = 2,
+        Camera_3 = 3,
+        Bell = 4,
+        Tablet = 5
+    }
 
     [SerializeField] private int money;
     [SerializeField] private int totalCost;
@@ -55,6 +64,42 @@ public class UpgradesManager : MonoBehaviour
     [SerializeField] private string clientsMoneyTitle;
     [SerializeField] private string clientsMoneyDescription;
 
+    [Header("Toys")]
+    [SerializeField] private int toysCost;
+    [SerializeField] private bool toys;
+    [SerializeField] private string toysTitle;
+    [SerializeField] private string toysDescription;
+
+    [Header("Camera 1")]
+    [SerializeField] private int camera_1Cost;
+    [SerializeField] private bool camera_1;
+    [SerializeField] private string camera_1Title;
+    [SerializeField] private string camera_1Description;
+
+    [Header("Camera 2")]
+    [SerializeField] private int camera_2Cost;
+    [SerializeField] private bool camera_2;
+    [SerializeField] private string camera_2Title;
+    [SerializeField] private string camera_2Description;
+
+    [Header("Camera 3")]
+    [SerializeField] private int camera_3Cost;
+    [SerializeField] private bool camera_3;
+    [SerializeField] private string camera_3Title;
+    [SerializeField] private string camera_3Description;
+
+    [Header("Bell")]
+    [SerializeField] private int bellCost;
+    [SerializeField] private bool bell;
+    [SerializeField] private string bellTitle;
+    [SerializeField] private string bellDescription;
+
+    [Header("Tablette")]
+    [SerializeField] private int tabletCost;
+    [SerializeField] private bool tablet;
+    [SerializeField] private string tabletTitle;
+    [SerializeField] private string tabletDescription;
+
 
     [HideInInspector] public UnityEvent costUpdateEvent;
 
@@ -75,28 +120,52 @@ public class UpgradesManager : MonoBehaviour
         costUpdateEvent.Invoke();
     }
 
-    public int setUpgradeValue(MultipleUpgradesType upgradeType, int value)
+    public void setUpgradeValue(MultipleUpgradesType upgradeType, int value)
     {
         switch (upgradeType)
         {
             case MultipleUpgradesType.BabyCalm:
-                return babyCalm = value;
+                babyCalm = value;
                 break;
             case MultipleUpgradesType.PlayerHumor:
-                return babyCalm = value;
+                babyCalm = value;
                 break;
             case MultipleUpgradesType.FurnaceSpeed:
-                return furnaceSpeed = value;
+                furnaceSpeed = value;
                 break;
             case MultipleUpgradesType.ClientsPatience:
-                return clientsPatience = value;
+                clientsPatience = value;
                 break;
             case MultipleUpgradesType.ClientsMoney:
-                return clientsMoney = value;
+                clientsMoney = value;
                 break;
         }
-        return 0;
     }
+    public void buy(SingleUpgradesType upgradeType, bool isBought)
+    {
+        switch (upgradeType)
+        {
+            case SingleUpgradesType.Toys:
+                toys = isBought;
+                break;                    
+            case SingleUpgradesType.Camera_1:
+                camera_1 = isBought;
+                break;
+            case SingleUpgradesType.Camera_2:
+                camera_2 = isBought;
+                break;
+            case SingleUpgradesType.Camera_3:
+                camera_3 = isBought;
+                break;
+            case SingleUpgradesType.Bell:
+                bell = isBought;
+                break;
+            case SingleUpgradesType.Tablet:
+                tablet = isBought;
+                break;
+        }
+    }
+
 
     // Get upgrades information
     public int getUpgradeValue(MultipleUpgradesType upgradeType)
@@ -117,6 +186,26 @@ public class UpgradesManager : MonoBehaviour
         return 0;
     }
 
+    public bool isUpgradeBought(SingleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case SingleUpgradesType.Toys:
+                return toys;
+            case SingleUpgradesType.Camera_1:
+                return camera_1;
+            case SingleUpgradesType.Camera_2:
+                return camera_2;
+            case SingleUpgradesType.Camera_3:
+                return camera_3;
+            case SingleUpgradesType.Bell:
+                return bell;
+            case SingleUpgradesType.Tablet:
+                return tablet;
+        }
+        return false;
+    }
+
     public int getNumberOfUpgardes(MultipleUpgradesType upgradeType)
     {
         switch (upgradeType)
@@ -135,20 +224,40 @@ public class UpgradesManager : MonoBehaviour
         return 0;
     }
 
-    public int getUpgradeCost(MultipleUpgradesType upgradeType, int nextUpgrade)
+    public int getUpgradeCost(MultipleUpgradesType upgradeType, int upgradeLevel)
     {
         switch (upgradeType)
         {
             case MultipleUpgradesType.BabyCalm:
-                return babyCalmCosts[nextUpgrade];
+                return babyCalmCosts[upgradeLevel];
             case MultipleUpgradesType.PlayerHumor:
-                return playerHumorCosts[nextUpgrade];
+                return playerHumorCosts[upgradeLevel];
             case MultipleUpgradesType.FurnaceSpeed:
-                return furnaceSpeedCosts[nextUpgrade];
+                return furnaceSpeedCosts[upgradeLevel];
             case MultipleUpgradesType.ClientsPatience:
-                return clientsPatienceCosts[nextUpgrade];
+                return clientsPatienceCosts[upgradeLevel];
             case MultipleUpgradesType.ClientsMoney:
-                return clientsMoneyCosts[nextUpgrade];
+                return clientsMoneyCosts[upgradeLevel];
+        }
+        return 0;
+    }
+
+    public int getUpgradeCost(SingleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case SingleUpgradesType.Toys:
+                return toysCost;
+            case SingleUpgradesType.Camera_1:
+                return camera_1Cost;
+            case SingleUpgradesType.Camera_2:
+                return camera_2Cost;
+            case SingleUpgradesType.Camera_3:
+                return camera_3Cost;
+            case SingleUpgradesType.Bell:
+                return bellCost;
+            case SingleUpgradesType.Tablet:
+                return tabletCost;
         }
         return 0;
     }
@@ -159,19 +268,34 @@ public class UpgradesManager : MonoBehaviour
         {
             case MultipleUpgradesType.BabyCalm:
                 return babyCalmTitle;
-                break;
             case MultipleUpgradesType.PlayerHumor:
                 return playerHumorTitle;
-                break;
             case MultipleUpgradesType.FurnaceSpeed:
                 return furnaceSpeedTitle;
-                break;
             case MultipleUpgradesType.ClientsPatience:
                 return clientsPatienceTitle;
-                break;
             case MultipleUpgradesType.ClientsMoney:
                 return clientsMoneyTitle;
-                break;
+        }
+        return null;
+    }
+
+    public string getUpgradeTitle(SingleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case SingleUpgradesType.Toys:
+                return toysTitle;
+            case SingleUpgradesType.Camera_1:
+                return camera_1Title;
+            case SingleUpgradesType.Camera_2:
+                return camera_2Title;
+            case SingleUpgradesType.Camera_3:
+                return camera_3Title;
+            case SingleUpgradesType.Bell:
+                return bellTitle;
+            case SingleUpgradesType.Tablet:
+                return tabletTitle;
         }
         return null;
     }
@@ -193,6 +317,27 @@ public class UpgradesManager : MonoBehaviour
         }
         return null;
     }
+
+    public string getUpgradeDescription(SingleUpgradesType upgradeType)
+    {
+        switch (upgradeType)
+        {
+            case SingleUpgradesType.Toys:
+                return toysDescription;
+            case SingleUpgradesType.Camera_1:
+                return camera_1Description;
+            case SingleUpgradesType.Camera_2:
+                return camera_2Description;
+            case SingleUpgradesType.Camera_3:
+                return camera_3Description;
+            case SingleUpgradesType.Bell:
+                return bellDescription;
+            case SingleUpgradesType.Tablet:
+                return tabletDescription;
+        }
+        return null;
+    }
+
 
     // Money
     public int getMoney() { return money; }
@@ -218,4 +363,14 @@ public class UpgradesManager : MonoBehaviour
     public float getfurnaceSppedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
     public float getClientsPatienceFactor() { return clientsPatienceFactors[clientsPatience]; }
     public float getClientsMoneyFactor() { return clientsMoneyFactors[clientsMoney]; }
+
+    // Get booleans
+    public bool isToysAvailable() { return toys; }
+    public bool isCamera_1Available() { return camera_1; }
+    public bool isCamera_2Available() { return camera_2; }
+    public bool isCamera_3Available() { return camera_3; }
+    public bool isBellAvailable() { return bell; }
+    public bool isTabletAvailable() { return tablet; }
+
+
 }

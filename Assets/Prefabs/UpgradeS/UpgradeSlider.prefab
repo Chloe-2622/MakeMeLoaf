@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5365870931723262269}
-  - component: {fileID: 8556876610771943152}
+  - component: {fileID: 7989140128947294718}
   - component: {fileID: 8740049246821435662}
   m_Layer: 5
   m_Name: UpgradeSlider
@@ -117,7 +117,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 200}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8556876610771943152
+--- !u!114 &7989140128947294718
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1892912186566139044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d4d5e1a6c85f5b41b89511cf64871bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 213e60034cab21f479eb40aa7be66b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeType: 0
@@ -165,8 +165,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8556876610771943152}
-          m_TargetAssemblyTypeName: UpgardeSlider, Assembly-CSharp
+        - m_Target: {fileID: 7989140128947294718}
+          m_TargetAssemblyTypeName: UpgradesSliders, Assembly-CSharp
           m_MethodName: showInfo
           m_Mode: 1
           m_Arguments:
@@ -181,8 +181,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 8556876610771943152}
-          m_TargetAssemblyTypeName: UpgardeSlider, Assembly-CSharp
+        - m_Target: {fileID: 7989140128947294718}
+          m_TargetAssemblyTypeName: UpgradesSliders, Assembly-CSharp
           m_MethodName: hideInfo
           m_Mode: 1
           m_Arguments:
@@ -805,8 +805,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8556876610771943152}
-        m_TargetAssemblyTypeName: UpgardeSlider, Assembly-CSharp
+      - m_Target: {fileID: 7989140128947294718}
+        m_TargetAssemblyTypeName: UpgradesSliders, Assembly-CSharp
         m_MethodName: increasePreview
         m_Mode: 1
         m_Arguments:
@@ -1390,8 +1390,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8556876610771943152}
-        m_TargetAssemblyTypeName: UpgardeSlider, Assembly-CSharp
+      - m_Target: {fileID: 7989140128947294718}
+        m_TargetAssemblyTypeName: UpgradesSliders, Assembly-CSharp
         m_MethodName: decreasePreview
         m_Mode: 1
         m_Arguments:

@@ -10,11 +10,14 @@ public class UpgradesMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI goldText;
     [SerializeField] private Color costColor;
 
-    [Header("Sliders")]
+    [Header("Upgrades Choice")]
     [SerializeField] private GameObject slidersObject;
+    [SerializeField] private GameObject buttonsObject;
 
     private UpgradesManager upgradesManager;
-    private List<UpgardeSlider> slidersList = new List<UpgardeSlider>();
+    private List<UpgradesSliders> slidersList = new List<UpgradesSliders>();
+    private List<UpgradesButtons> buttonsList = new List<UpgradesButtons>();
+
 
 
     public void OnEnable()
@@ -25,7 +28,11 @@ public class UpgradesMenu : MonoBehaviour
 
         for (int i = 0; i < slidersObject.transform.childCount; i++)
         {
-            slidersList.Add(slidersObject.transform.GetChild(i).gameObject.GetComponent<UpgardeSlider>());
+            slidersList.Add(slidersObject.transform.GetChild(i).gameObject.GetComponent<UpgradesSliders>());
+        }
+        for (int i = 0; i < buttonsObject.transform.childCount; i++)
+        {
+            buttonsList.Add(buttonsObject.transform.GetChild(i).gameObject.GetComponent<UpgradesButtons>());
         }
     }
 
@@ -36,11 +43,19 @@ public class UpgradesMenu : MonoBehaviour
 
     public void startGame()
     {
-        foreach(UpgardeSlider slider in slidersList) { Debug.Log("oui");  slider.applyUpgardes(); }
+        foreach(UpgradesSliders slider in slidersList) { slider.applyUpgardes(); }
+        foreach(UpgradesButtons button in buttonsList) { button.applyUpgardes(); }
     }
 
     public void showGoldAndCost()
     {
         goldText.text = upgradesManager.getMoney().ToString() + " G " + " <color=#" + ColorUtility.ToHtmlStringRGB(costColor) + "> (- " + upgradesManager.getTotalCost() + ")";
     }
+
+
+
+
+
+
+
 }
