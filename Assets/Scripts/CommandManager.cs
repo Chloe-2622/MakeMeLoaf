@@ -199,8 +199,10 @@ public class CommandManager : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        int hours = (int)(currentDayTime / (dayEndHour - dayStartHour) + dayStartHour);
-        int min = (int)(((currentDayTime / (dayEndHour - dayStartHour) + dayStartHour) - hours) * 60.0f);
+        int timeOfDay = GameManager.Instance.timeOfDay;
+
+        int hours = dayStartHour + timeOfDay / 60;
+        int min = timeOfDay % 60;
         dayTimeText.text = hours.ToString("00") + ":" + min.ToString("00");
 
         moneyText.text = UpgradesManager.Instance?.getMoney().ToString() + "€";
@@ -263,6 +265,8 @@ public class CommandManager : MonoBehaviour
                 {
                     ClearCommand(i);
                     UpgradesManager.Instance.addMoney((int)earnedMoney);
+                    Select.instance.ResetSelection();
+                    Destroy(selectable.gameObject);
                     break;
                 }
             }

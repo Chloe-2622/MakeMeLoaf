@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -21,12 +23,22 @@ public class GameManager : MonoBehaviour
 
     public float debugTimeScale;
 
+    public GameObject TimeUI;
+
+
+
     // Instance statique du GameManager
     public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
+
+
+
+
         //baby = GameObject.Find("Baby");
+
+        TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
 
         if (Instance == null)
         {
@@ -45,6 +57,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = debugTimeScale;
     }
 
+    private void GetUpgrades()
+    {
+
+    }
 
     // Update is called once per frame
     void Update()
@@ -58,9 +74,19 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator PassTime()
     {
+        int i = 0;
+
         while (!hasDayEnded)
         {
             timeOfDay += minutesPerSecond;
+            if (i % 2 == 0)
+            {
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (8 + timeOfDay / 60).ToString("D2") + ":" + (timeOfDay % 60).ToString("D2");
+            } else
+            {
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (8 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
+            }
+            i++;
             baby.GetComponent<Baby>().AddFrustration(frustration_time_factor * minutesPerSecond);
             yield return new WaitForSeconds(1);
         }
