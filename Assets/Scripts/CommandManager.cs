@@ -199,8 +199,10 @@ public class CommandManager : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        int hours = (int)(currentDayTime * (dayEndHour - dayStartHour)/600 + dayStartHour);
-        int min = (int)(((currentDayTime * (dayEndHour - dayStartHour)/600 + dayStartHour) - hours) * 60.0f);
+        int timeOfDay = GameManager.Instance.timeOfDay;
+
+        int hours = dayStartHour + timeOfDay / 60;
+        int min = timeOfDay % 60;
         dayTimeText.text = hours.ToString("00") + ":" + min.ToString("00");
 
         moneyText.text = UpgradesManager.Instance?.getMoney().ToString() + "€";
