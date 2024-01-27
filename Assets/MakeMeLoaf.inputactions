@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "Take",
                     "type": "Button",
                     "id": "ed0dbeb8-6c7d-4f4e-8468-c4ef86983658",
                     "expectedControlType": "Button",
@@ -206,7 +206,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -217,7 +217,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -228,7 +228,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Fire",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -239,7 +239,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Fire",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -250,7 +250,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Fire",
+                    "action": "Take",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

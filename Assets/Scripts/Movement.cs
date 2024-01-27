@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
         if(OnSlope()) rb.AddForce(SlopeMoveDir(movement) * speed);
         else rb.AddForce(movement*speed);
         rb.velocity = rb.velocity.normalized * Mathf.Clamp(rb.velocity.magnitude, 0, maxSpeed);
-        rb.useGravity = !OnSlope();
+        // rb.useGravity = !OnSlope();
 
         // rotation cam
 
@@ -71,6 +71,7 @@ public class Movement : MonoBehaviour
         if(DebugFocus) mouse = lookInput.action.ReadValue<Vector2>();
         transform.Rotate(Vector3.up, mouse.x * sensi / 100, Space.World);
         cam.transform.Rotate(Vector3.right, mouse.y * sensi / 100, Space.Self);
+        if(!(cam.transform.localEulerAngles.x < 65 || cam.transform.localEulerAngles.x > 295)) cam.transform.Rotate(Vector3.left, mouse.y * sensi / 100, Space.Self);
 
         if (rb.velocity.magnitude != 0f)
         {
@@ -87,7 +88,7 @@ public class Movement : MonoBehaviour
 
 
 
-        }
+    }
 
     private Vector3 MoveDir(Vector2 vec2)
     {

@@ -13,12 +13,15 @@ public class Select : MonoBehaviour
     [SerializeField] private TextMeshProUGUI labelUI;
 
 
-    private GameManager gM = GameManager.Instance;
+    private GameManager gM;
+    private void Start()
+    {
+        gM = GameManager.Instance;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(gM);
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
          && (GameObject.ReferenceEquals(hit.transform.gameObject, selectedO) || selectedO == null)
          && hit.transform.gameObject.TryGetComponent<Selectable>(out selected))
