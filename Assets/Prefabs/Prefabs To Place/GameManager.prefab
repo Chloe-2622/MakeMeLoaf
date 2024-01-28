@@ -51,10 +51,11 @@ MonoBehaviour:
   hasDayEnded: 0
   isTimePassing: 0
   playerRange: 2
-  minutesPerSecond: 1
+  minutesPerSecond: 10
   frustration_time_factor: 0.01666667
   debugTimeScale: 1
   TimeUI: {fileID: 0}
+  Focus: 0
   babyCalm: 0
   playerHumor: 0
   furnaceSpeed: 0
