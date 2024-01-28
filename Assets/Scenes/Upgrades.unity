@@ -633,6 +633,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 433619900}
     m_Modifications:
     - target: {fileID: 1638307389120440454, guid: 2d3ebf20f4027b849b5117ea59af9565, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9a9bbbe0965ab94ba5113a9309ab0cf, type: 3}
+    - target: {fileID: 1638307389120440454, guid: 2d3ebf20f4027b849b5117ea59af9565, type: 3}
       propertyPath: upgradeType
       value: 3
       objectReference: {fileID: 0}
@@ -1649,6 +1653,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 433619900}
     m_Modifications:
     - target: {fileID: 501918054388893004, guid: dc56fe430796045478b151a0c5534f55, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 38ecca130ef32e842bfabf964b8087d0, type: 3}
+    - target: {fileID: 501918054388893004, guid: dc56fe430796045478b151a0c5534f55, type: 3}
       propertyPath: upgradeType
       value: 4
       objectReference: {fileID: 0}
@@ -1998,6 +2006,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433619900}
     m_Modifications:
+    - target: {fileID: 501918054388893004, guid: dc56fe430796045478b151a0c5534f55, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 11547e622b886c74d99de8594f5ab0dc, type: 3}
     - target: {fileID: 501918054388893004, guid: dc56fe430796045478b151a0c5534f55, type: 3}
       propertyPath: upgradeType
       value: 2
@@ -2879,6 +2891,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 433619900}
     m_Modifications:
     - target: {fileID: 1638307389120440454, guid: 2d3ebf20f4027b849b5117ea59af9565, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dfb78f3f3960287469bcea03dff66b43, type: 3}
+    - target: {fileID: 1638307389120440454, guid: 2d3ebf20f4027b849b5117ea59af9565, type: 3}
       propertyPath: upgradeType
       value: 1
       objectReference: {fileID: 0}
@@ -2979,10 +2995,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: money
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 7696785658038010204, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: m_Name
       value: UpgradesManager
@@ -3158,6 +3170,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 433619900}
     m_Modifications:
+    - target: {fileID: 501918054388893004, guid: dc56fe430796045478b151a0c5534f55, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ad655743f8b9994d8204a151b473873, type: 3}
     - target: {fileID: 3518133912487553084, guid: dc56fe430796045478b151a0c5534f55, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
