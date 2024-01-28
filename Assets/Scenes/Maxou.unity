@@ -7444,7 +7444,7 @@ PrefabInstance:
       objectReference: {fileID: 2938891429356909361, guid: 85dae2899a7e9d34db8e10e09c8b9c29, type: 3}
     - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
       propertyPath: stationType
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
       propertyPath: croissantPref
