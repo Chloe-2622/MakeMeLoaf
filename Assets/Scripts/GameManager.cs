@@ -52,10 +52,10 @@ public class GameManager : MonoBehaviour
     {
         // baby = GameObject.Find("Baby");
 
-        // upgradeManager = UpgradesManager.Instance;
+        upgradeManager = UpgradesManager.Instance;
         mainCamera = GameObject.Find("Player").transform.Find("Main Camera").GetComponent<Camera>();
 
-        // TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
+        TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
 
         if (Instance == null)
         {
@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour
             EndDay();
         }
 
-        // GetUpgrades();
+        GetUpgrades();
 
-        // StartCoroutine(PassTime());
+        StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
                 TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
             }
             i++;
-            baby.GetComponent<Baby>().AddFrustration(babyCalm * minutesPerSecond);
+            baby.GetComponent<Baby>().AddFrustration(babyCalm * frustration_time_factor * minutesPerSecond);
             yield return new WaitForSeconds(1);
         }
         

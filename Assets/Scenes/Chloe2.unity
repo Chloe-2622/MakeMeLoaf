@@ -4335,6 +4335,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4062941645166808320, guid: 1b531f99b2dd4754482b13e6c784de5b, type: 3}
   m_PrefabInstance: {fileID: 1394669739}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1395770801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3495923683290811837, guid: 747b56fa5e9caba4cbad78e836011c35, type: 3}
+  m_PrefabInstance: {fileID: 1775420093}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1412730000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4632,7 +4637,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2423054465297540564, guid: 798fde39dcf556e47b7a3d3041d65028, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1.300003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2423054465297540564, guid: 798fde39dcf556e47b7a3d3041d65028, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5785,7 +5790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4757900555177441395, guid: 747b56fa5e9caba4cbad78e836011c35, type: 3}
       propertyPath: speed
-      value: 750
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7546817276909325311, guid: 747b56fa5e9caba4cbad78e836011c35, type: 3}
       propertyPath: labelUI
@@ -7274,6 +7279,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4078496387325212619, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1395770801}
     - target: {fileID: 5421447301782574399, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
       propertyPath: m_Layer
       value: 2
