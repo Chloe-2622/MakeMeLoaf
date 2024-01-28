@@ -37,7 +37,7 @@ public class BabySkillCheck : MonoBehaviour
     private IEnumerator BabySkillCheckCoroutine()
     {
         float playerCursorY = playerCursor.anchoredPosition.y;
-        float babyCursorY = Random.Range(-180, + 180);
+        float babyCursorY = Random.Range(-180, +180);
         babyCursor.anchoredPosition = new Vector2(babyCursor.anchoredPosition.x, babyCursorY);
         float sign = -1;
 
