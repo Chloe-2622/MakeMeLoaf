@@ -44,67 +44,87 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1ae9e12b88fd74297265955a36481f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 1000
+  money: 0
   totalCost: 0
   babyCalmFactors:
-  - 0
-  - 0
-  babyCalmCosts: 0000000000000000
+  - 1
+  - 0.9
+  - 0.8
+  - 0.7
+  - 0.6
+  - 0.5
+  babyCalmCosts: 00000000f4010000ee020000e8030000dc050000d0070000
   babyCalm: 0
-  babyCalmTitle: 
-  babyCalmDescription: 
+  babyCalmTitle: Take this and  go play elsewhere
+  babyCalmDescription: 'Your baby takes more time to stress out '
   playerHumorFactors:
-  - 0
-  - 0
-  playerHumorCosts: 0000000000000000
+  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
+  playerHumorCosts: 00000000f4010000ee020000dc050000d0070000b80b0000
   playerHumor: 0
-  playerHumorTitle: 
-  playerHumorDescription: 
+  playerHumorTitle: Comedy lessons
+  playerHumorDescription: You are more efficient when amusing your baby
   furnaceSpeedFactors:
-  - 0
-  - 0
-  furnaceSpeedCosts: 0000000000000000
+  - 1
+  - 1.33
+  - 1.66
+  - 2
+  - 2
+  - 3
+  furnaceSpeedCosts: 00000000f4010000ee020000dc050000d0070000b80b0000
   furnaceSpeed: 0
-  furnaceSpeedTitle: 
-  furnaceSpeedDescription: 
+  furnaceSpeedTitle: Power of money
+  furnaceSpeedDescription: The furnace is more expensive. So it cooks faster.
   clientsPatienceFactors:
-  - 0
-  - 0
-  clientsPatienceCosts: 0000000000000000
+  - 1
+  - 1.25
+  - 1.5
+  - 1.75
+  - 2
+  clientsPatienceCosts: 00000000f4010000ee020000dc050000c4090000
   clientsPatience: 0
-  clientsPatienceTitle: 
-  clientsPatienceDescription: 
+  clientsPatienceTitle: 'Improvement of society '
+  clientsPatienceDescription: The world would be a better place if people learnt
+    how to wait. Your clients stay longer.
   clientsMoneyFactors:
-  - 0
-  - 0
-  clientsMoneyCosts: 0000000000000000
+  - 1
+  - 1.1
+  - 1.2
+  - 1.3
+  - 1.4
+  - 1.5
+  clientsMoneyCosts: 00000000f4010000ee020000dc050000c4090000b80b0000
   clientsMoney: 0
-  clientsMoneyTitle: 
-  clientsMoneyDescription: 
+  clientsMoneyTitle: 'Inflation '
+  clientsMoneyDescription: 'Increase your prices '
   toysCost: 0
   toys: 0
-  toysTitle: 
-  toysDescription: 
-  camera_1Cost: 0
+  toysTitle: Toys
+  toysDescription: Non implemented
+  camera_1Cost: 1000
   camera_1: 0
-  camera_1Title: 
-  camera_1Description: 
-  camera_2Cost: 0
+  camera_1Title: Kitchen camera
+  camera_1Description: Add a camera in the kitchen
+  camera_2Cost: 1000
   camera_2: 0
-  camera_2Title: 
-  camera_2Description: 
-  camera_3Cost: 0
+  camera_2Title: Storage camera
+  camera_2Description: Add a camera in the storage
+  camera_3Cost: 1000
   camera_3: 0
-  camera_3Title: 
-  camera_3Description: 
-  bellCost: 0
+  camera_3Title: Store camera
+  camera_3Description: Add a camera in the store
+  bellCost: 500
   bell: 0
-  bellTitle: 
-  bellDescription: 
-  tabletCost: 0
+  bellTitle: Bell
+  bellDescription: 'Let you know when a client enter the store '
+  tabletCost: 9999
   tablet: 0
-  tabletTitle: 
-  tabletDescription: 
+  tabletTitle: 'Tablet '
+  tabletDescription: "Give a tablet to your baby so it doesn\u2019t bother you "
   costUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
