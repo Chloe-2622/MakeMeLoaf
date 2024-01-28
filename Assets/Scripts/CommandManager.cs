@@ -45,8 +45,6 @@ public class CommandManager : MonoBehaviour
 
     [SerializeField] private ClientAgentScript clientAgentPrefab;
 
-    public float clientPatience = 1.0f;
-
     private float currentDayTime = 0;
 
     private void Awake()
@@ -92,7 +90,7 @@ public class CommandManager : MonoBehaviour
                 yield return new WaitForSeconds(5.0f);
 
                 //Randomize client patience
-                float duration = UnityEngine.Random.Range(60.0f, 120.0f) * clientPatience;
+                float duration = UnityEngine.Random.Range(60.0f, 120.0f) * UpgradesManager.Instance.getClientsPatienceFactor();
                 Command command = new Command();
                 command.time = duration;
                 command.product = (Product)UnityEngine.Random.Range(0, 6);
@@ -256,6 +254,8 @@ public class CommandManager : MonoBehaviour
                 break;
 
         }
+
+        earnedMoney *= UpgradesManager.Instance.getClientsMoneyFactor();
 
         if(earnedMoney > 0)
         {

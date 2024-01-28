@@ -76,7 +76,7 @@ public class Four : MonoBehaviour
         {
             foreach (CookingIngredient ci in cookingIngredients)
             {
-                ci.time += Time.deltaTime;/* * UpgradesManager.Instance.getfurnaceSppedFactor();*/ //TODO
+                ci.time += Time.deltaTime * UpgradesManager.Instance.getfurnaceSpeedFactor();
 
                 if (ci.time > cookingTime && !ci.resolved)
                 {
