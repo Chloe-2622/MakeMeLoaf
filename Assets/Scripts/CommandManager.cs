@@ -79,7 +79,7 @@ public class CommandManager : MonoBehaviour
     {
         beginTime = Time.time;
         //Instantiate clients randomly, not more than 5 clients at the same time, their duration time is random and can be upgraded with the upgrade system
-        while (Time.time < beginTime + dayDuration)
+        while (GameManager.Instance.timeOfDay < 720)
         {
             currentDayTime = Time.time - beginTime;
             if (currentCommands < maxCommands)
