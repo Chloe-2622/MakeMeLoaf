@@ -11,6 +11,9 @@ public class Movement : MonoBehaviour
 
     [Header("Miscelionous")]
     [SerializeField] Camera cam;
+    [SerializeField] AudioSource stepSound;
+    private float timeBetweenStep = 0.3f;
+    private float time;
 
     [Header("physics")]
     [SerializeField] Rigidbody rb;
@@ -62,6 +65,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+        
+
+
         // deplacement
         if (gM.Focus) movement = MoveDir(moveInput.action.ReadValue<Vector2>());
         else movement = Vector3.zero;
@@ -98,12 +105,19 @@ public class Movement : MonoBehaviour
         transform.eulerAngles = new Vector3(0, yaw, 0);
         cam.transform.eulerAngles = new Vector3(pitch, yaw, 0);
 
-        if (rb.velocity.magnitude != 0f)
+        if (rb.velocity.magnitude > 0.2f)
         {
             Vector3 pos = cam.transform.localPosition;
             totalDist += rb.velocity.magnitude * Time.deltaTime * NodeSpeed;
             pos.y = baseCamHeight + Mathf.Sin(totalDist * 2*Mathf.PI) * NodeSize;
             cam.transform.localPosition = pos;
+
+            if (time > timeBetweenStep)
+            {
+                time = 0;
+                stepSound.pitch = Random.Range(0.7f, 1.3f);
+                stepSound.Play();
+            }
         }
         else
         {
