@@ -46,6 +46,9 @@ public class CommandManager : MonoBehaviour
 
     [SerializeField] private ClientAgentScript clientAgentPrefab;
 
+    [SerializeField] private AudioSource encaissement;
+    [SerializeField] private AudioSource dring;
+
     private float currentDayTime = 0;
 
     private void Awake()
@@ -139,6 +142,8 @@ public class CommandManager : MonoBehaviour
             if (commands[i].time == 0)
             {
                 commands[i] = command;
+                if(UpgradesManager.Instance.isBellAvailable())
+                    dring.Play();
                 return true;
             }
             else if (commands[i].time < command.time)
@@ -155,6 +160,9 @@ public class CommandManager : MonoBehaviour
                 break;
             }
         }
+
+        if (UpgradesManager.Instance.isBellAvailable())
+            dring.Play();
 
         currentCommands++;
 
@@ -268,6 +276,7 @@ public class CommandManager : MonoBehaviour
                     UpgradesManager.Instance.addMoney((int)earnedMoney);
                     Select.instance.ResetSelection();
                     Destroy(selectable.gameObject);
+                    encaissement.Play();
                     break;
                 }
             }

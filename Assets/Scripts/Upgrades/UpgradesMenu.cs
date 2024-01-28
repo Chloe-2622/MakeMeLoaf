@@ -91,6 +91,6 @@ public class UpgradesMenu : MonoBehaviour
     public IEnumerator WaitTillSlidersEnd()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Upgrades");
+        SceneManager.LoadScene("Game");
     }
 }
