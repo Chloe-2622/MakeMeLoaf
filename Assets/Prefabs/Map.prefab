@@ -1613,6 +1613,10 @@ PrefabInstance:
       propertyPath: moneyText
       value: 
       objectReference: {fileID: 4196745798089011127}
+    - target: {fileID: 7751681201547386110, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
