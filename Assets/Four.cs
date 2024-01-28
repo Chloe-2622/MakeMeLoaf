@@ -13,7 +13,6 @@ public class Four : MonoBehaviour
 {
 
     [SerializeField] private GameObject porteFour;
-    [SerializeField] private GameObject cam;
     [SerializeField] private float foorDoorSpeed = 90.0f;
 
     [SerializeField] private float cookingTime = 30.0f;
@@ -64,7 +63,7 @@ public class Four : MonoBehaviour
     public void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, GameManager.Instance.playerRange)
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, GameManager.Instance.playerRange)
          && hit.transform.gameObject == porteFour)
         {
             if (Input.GetKeyDown(KeyCode.E))
