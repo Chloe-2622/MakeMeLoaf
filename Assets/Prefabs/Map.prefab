@@ -909,7 +909,7 @@ Transform:
   m_GameObject: {fileID: 6040082590105227159}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.773, y: 0.048, z: 0.716}
+  m_LocalPosition: {x: 7.773, y: 1.048, z: 0.716}
   m_LocalScale: {x: 1, y: 0.8333333, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -969,7 +969,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.7618732, y: 1.3637886, z: 2.7421272}
-  m_Center: {x: -0.013883591, y: 1.622714, z: -0.000002503395}
+  m_Center: {x: -0.013883591, y: 0.622714, z: -0.000002503395}
 --- !u!1 &6594215430387790894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,11 +1540,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6720641410914314296, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 4196745798089011127}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+--- !u!114 &4196745798089011127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2658112088149450907, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+  m_PrefabInstance: {fileID: 2224308505561829164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4265422160092935621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2733550936299387625, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
@@ -2019,7 +2034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 547a61255c8976a46b9daf1a1bef3ba2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 547a61255c8976a46b9daf1a1bef3ba2, type: 3}
       propertyPath: m_LocalPosition.z
