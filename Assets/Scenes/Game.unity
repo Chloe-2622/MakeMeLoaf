@@ -495,7 +495,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: tablet
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: babyCalmCosts.Array.data[0]
