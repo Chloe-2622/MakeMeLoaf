@@ -106,6 +106,7 @@ public class Craft : MonoBehaviour
     {
         foreach(KeyValuePair<string, string[]> recette in recettes)
         {
+            Debug.Log(recette.Value);
             if(GotAllItems(recette.Value)) return recette.Key;
         }
         return "rien";
@@ -128,7 +129,7 @@ public class Craft : MonoBehaviour
         return false;
     }
 
-    public void MakeCraft()
+    public IEnumerator MakeCraft()
     {
         PrintDic();
         string resultat = "";
@@ -136,15 +137,17 @@ public class Craft : MonoBehaviour
         {
             case CraftType.Petrin:
                 resultat = FindCraft(recettes_P);
-                if (resultat == "rien") return;
+                Debug.Log(resultat +" t2.1");
+                if (resultat == "rien") yield break;
                 gM.Focus = false;
-                StartCoroutine(petScript.StartGame());
+                yield return petScript.StartGame();
+                Debug.Log("t2.2");
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_P);
                 break;
             case CraftType.Melange:
                 resultat = FindCraft(recettes_M);
-                if (resultat == "rien") return;
+                if (resultat == "rien") yield break;
                 gM.Focus = false;
                 StartCoroutine(malScript.StartGame());
                 SpawnObject(resultat);
@@ -152,18 +155,18 @@ public class Craft : MonoBehaviour
                 break;
             case CraftType.PlanDeTravail:
                 resultat = FindCraft(recettes_PdT);
-                if (resultat == "rien") return;
+                if (resultat == "rien") yield break;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_PdT);
                 break;
             case CraftType.Four:
                 resultat = FindCraft(recettes_F);
-                if (resultat == "rien") return;
+                if (resultat == "rien") yield break;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_F);
                 break;
         }
-        return;
+        yield break;
 
     }
 
