@@ -91,6 +91,8 @@ public class Baby : MonoBehaviour
         frustration_factor = total_frustration / (1 + total_frustration);
         // Debug.Log(frustration_factor / gameOver_frustration_factor);
         // babyImage.transform.position = Vector3.Lerp(babyImage.transform.position, new Vector3(babyBarMinX, babyImage.transform.position.y, babyImage.transform.position.z), frustration_factor / gameOver_frustration_factor);
+        babyImage.rectTransform.anchoredPosition = new Vector2(-frustration_factor*400.0f, 0);
+
 
         if (gameManager.timeOfDay == activityLevel_1) { currentActivityLevel = 1; probaCuisine = 0.5f; probaMagasin = 0.5f; }
         if (gameManager.timeOfDay == activityLevel_2) { currentActivityLevel = 2; probaCuisine = 0.2f; probaMagasin = 0.5f; probaSousSol = 0.3f; }

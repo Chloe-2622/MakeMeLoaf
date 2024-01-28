@@ -36,7 +36,7 @@ public class CommandManager : MonoBehaviour
     private Command[] commands;
     private int currentCommands = 0;
 
-    [SerializeField] private string[] productNames = {"Pain aux céréales", "Baguette", "Pain de mie", "Eclair", "Croissant", "Pain au chocolat"};
+    [SerializeField] private string[] productNames = {"Pain aux céréales", "Baguette", "Pain de mie", "Eclair au chocolat", "Croissant", "Pain au chocolat"};
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
