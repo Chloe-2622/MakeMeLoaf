@@ -8,7 +8,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private InputActionReference takeInput;
     [SerializeField] private Camera cam;
     private RaycastHit hit;
-    private PickUpable pickUped;
+    public static PickUpable pickUped;
     [SerializeField] private Vector3 handPostion;
 
 

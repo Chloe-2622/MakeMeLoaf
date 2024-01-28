@@ -36,7 +36,7 @@ public class CommandManager : MonoBehaviour
     private Command[] commands;
     private int currentCommands = 0;
 
-    [SerializeField] private string[] productNames = {"Pain aux céréales", "Baguette", "Pain de mie", "Eclair au chocolat", "Croissant", "Pain au chocolat"};
+    [SerializeField] private string[] productNames = { "Pain complet", "Baguette", "Pain de mie", "Éclair au chocolat", "Croissant", "Pain au chocolat" };
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
@@ -230,7 +230,7 @@ public class CommandManager : MonoBehaviour
         Product expectedProduct = Product.NONE;
         switch (selectable.label)
         {
-            case "Eclair":
+            case "Éclair au chocolat":
                 earnedMoney = 200f;
                 expectedProduct = Product.ECLAIR;
                 break;
@@ -242,7 +242,7 @@ public class CommandManager : MonoBehaviour
                 earnedMoney = 150f;
                 expectedProduct = Product.PAIN_CHOCOLAT;    
                 break;
-            case "Pain aux céréales":
+            case "Pain complet":
                 earnedMoney = 90f;
                 expectedProduct = Product.PAIN_CEREAL;
                 break;

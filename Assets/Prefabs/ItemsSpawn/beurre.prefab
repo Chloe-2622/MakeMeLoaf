@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1806680513116206669, guid: ffe6d9e45a451e74d87ffa56f3cd43c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77dff688d534121479f79a3f17d027e0, type: 2}
+    - target: {fileID: -1439730007547781893, guid: ffe6d9e45a451e74d87ffa56f3cd43c6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f67873c935152e546afa3fe4b66524c6, type: 2}
     - target: {fileID: 919132149155446097, guid: ffe6d9e45a451e74d87ffa56f3cd43c6, type: 3}
       propertyPath: m_Name
       value: Beurre

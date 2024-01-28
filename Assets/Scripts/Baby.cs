@@ -129,7 +129,7 @@ public class Baby : MonoBehaviour
 
         // 
 
-        babyImage.transform.localPosition = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(babyBarMinX, 0, 0), frustration_factor / 0.8f);
+        babyImage.transform.localPosition = Vector3.Lerp(new Vector3(-babyBarMinX/2, 0, 0), new Vector3(babyBarMinX/2, 0, 0), frustration_factor / 0.8f);
 
     }
 
@@ -185,7 +185,7 @@ public class Baby : MonoBehaviour
     {
         isCrying = true;
 
-        gameMusic0.Pause();
+        gameMusic0.Stop();
 
         if (currentActivityLevel == 0)
         {
@@ -252,7 +252,7 @@ public class Baby : MonoBehaviour
         babyCry2.Stop();
         gameMusic1.Stop();
         gameMusic2.Stop();
-        gameMusic0.UnPause();
+        gameMusic0.Play();
 
         yield return null;
     }

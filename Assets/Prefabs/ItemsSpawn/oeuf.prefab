@@ -64,6 +64,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1231080820889828584, guid: e1616ddd82dda5f4bba670622280705c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d6d61d6d51c94d40b7501a1f6b002c1, type: 2}
+    - target: {fileID: -678588488315902003, guid: e1616ddd82dda5f4bba670622280705c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6d6d61d6d51c94d40b7501a1f6b002c1, type: 2}
+    - target: {fileID: 420719701001041901, guid: e1616ddd82dda5f4bba670622280705c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f955a4ac60d0bf84e898c3699d3c31cc, type: 2}
     - target: {fileID: 919132149155446097, guid: e1616ddd82dda5f4bba670622280705c, type: 3}
       propertyPath: m_Name
       value: Oeufs
