@@ -137,7 +137,7 @@ public class GameManager : MonoBehaviour
                 TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
             }
             i++;
-            baby.GetComponent<Baby>().AddFrustration(babyCalm * frustration_time_factor * minutesPerSecond);
+            baby.GetComponent<Baby>().AddFrustration(babyCalm * frustration_time_factor * (isTabletAvailable ? 0 : 1) * minutesPerSecond);
             yield return new WaitForSeconds(1);
         }
         

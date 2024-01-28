@@ -131,15 +131,6 @@ public class Baby : MonoBehaviour
         probaMagasin = 0f;
         probaSousSol = 0f;
 
-        if (presentationMode)
-        {
-            cryStat0 = 1f;
-            cryStat1 = 1f;
-            cryStat2 = 1f;
-            cryStat3 = 1f;
-
-            gameManager.minutesPerSecond = gameSpeed;
-        }
     }
 
     void Update()
@@ -167,6 +158,30 @@ public class Baby : MonoBehaviour
         if (frustration_factor >= 0.8 && !gameManager.hasDayEnded)
         {
             gameManager.EndDay();
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            presentationMode = !presentationMode;
+
+            if (presentationMode)
+            {
+                cryStat0 = 1f;
+                cryStat1 = 1f;
+                cryStat2 = 1f;
+                cryStat3 = 1f;
+
+                gameManager.minutesPerSecond = gameSpeed;
+            } else
+            {
+                cryStat0 = .2f;
+                cryStat1 = 1/3;
+                cryStat2 = .5f;
+                cryStat3 = .5f;
+
+                gameManager.minutesPerSecond = 1;
+            }
+
         }
     }
 

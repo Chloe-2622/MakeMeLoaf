@@ -494,6 +494,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: tablet
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: babyCalmCosts.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
@@ -2271,7 +2275,7 @@ PrefabInstance:
       objectReference: {fileID: 726350385}
     - target: {fileID: 4068132747321484481, guid: 616bea07450c73f4bbdcd10b2ce7c7dc, type: 3}
       propertyPath: presentationMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4068132747321484481, guid: 616bea07450c73f4bbdcd10b2ce7c7dc, type: 3}
       propertyPath: RoomDelimitations
@@ -2386,7 +2390,7 @@ PrefabInstance:
       objectReference: {fileID: 1403919321}
     - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
       propertyPath: minutesPerSecond
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3352350107875901374, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
       propertyPath: m_LocalPosition.x
