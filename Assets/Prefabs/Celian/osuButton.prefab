@@ -120,7 +120,7 @@ MonoBehaviour:
   fadeDuration: 0.1
   growDuration: 0.25
   targetScale: {x: 1, y: 1, z: 1}
-  normalSkin: {fileID: 21300000, guid: 0609787cdecfb357db888422ad5c6253, type: 3}
+  normalSkin: {fileID: 21300000, guid: 5e9b0e02aacb15245804bf57a4db3392, type: 3}
   alternateSkin: {fileID: 21300000, guid: 84ab9ec852f702fce8cdd650a8820972, type: 3}
   circleImage: {fileID: 2031346451897872573}
   osuImage: {fileID: 21300000, guid: 84ab9ec852f702fce8cdd650a8820972, type: 3}
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0609787cdecfb357db888422ad5c6253, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e9b0e02aacb15245804bf57a4db3392, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
