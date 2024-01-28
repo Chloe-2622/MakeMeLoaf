@@ -21,6 +21,9 @@ public class Baby : MonoBehaviour
      */
 
 
+    [Header("-------------- Mode présentation --------------")]
+    [SerializeField] private bool presentationMode;
+
     [Header("Stats")]
     [SerializeField] private float movingSpeed;
 
@@ -43,6 +46,12 @@ public class Baby : MonoBehaviour
     [SerializeField] private float gameOver_frustration_factor;
     [SerializeField] private float timeBeforeNextAction;
 
+    [Header("Cry stats")]
+    [SerializeField] private float cryStat0;
+    [SerializeField] private float cryStat1;
+    [SerializeField] private float cryStat2;
+    [SerializeField] private float cryStat3;
+
     [Header("Pièces")]
     [SerializeField] private GameObject RoomDelimitations;
     [SerializeField] private Vector3 cuisineMin;
@@ -63,6 +72,7 @@ public class Baby : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private Animator babyAnimator;
+    [SerializeField] private bool menuBaby;
 
     [Header("Sounds")]
     [SerializeField] private AudioSource babyCry0;
@@ -76,6 +86,11 @@ public class Baby : MonoBehaviour
     [SerializeField] private LayerMask bebeMask;
     [SerializeField] private Outline outline;
 
+    [Header("Larmes")]
+    [SerializeField] private ParticleSystem particlePleure0;
+    [SerializeField] private ParticleSystem particlePleure1;
+    [SerializeField] private ParticleSystem particlePleure2;
+    [SerializeField] private ParticleSystem particlePleure3;
 
     private NavMeshAgent agent;
     private GameManager gameManager;
@@ -89,6 +104,11 @@ public class Baby : MonoBehaviour
         outline = GetComponent<Outline>();
         outline.enabled = false;
 
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = movingSpeed;
+
+        if (menuBaby) { return; }
+
         // Rooms delimitations;
 
         cuisineMin = RoomDelimitations.transform.Find("CuisineMin").position;
@@ -98,8 +118,7 @@ public class Baby : MonoBehaviour
         sousSolMin = RoomDelimitations.transform.Find("SousSolMin").position;
         sousSolMax = RoomDelimitations.transform.Find("SousSolMax").position;
 
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = movingSpeed;
+        
 
         timeBeforeNextAction = 5f;
         StartCoroutine(IAactionCountdown());
@@ -108,6 +127,16 @@ public class Baby : MonoBehaviour
         probaCuisine = 1f;
         probaMagasin = 0f;
         probaSousSol = 0f;
+
+        if (presentationMode)
+        {
+            cryStat0 = 1f;
+            cryStat1 = 1f;
+            cryStat2 = 1f;
+            cryStat3 = 1f;
+
+            gameManager.minutesPerSecond = 10;
+        }
     }
 
     void Update()
@@ -190,18 +219,26 @@ public class Baby : MonoBehaviour
         if (currentActivityLevel == 0)
         {
             babyCry0.Play();
+            particlePleure0.gameObject.SetActive(true);
+            particlePleure0.Play();
         }
         if (currentActivityLevel == 1)
         {
             babyCry1.Play();
+            particlePleure1.gameObject.SetActive(true);
+            particlePleure1.Play();
         }
         if (currentActivityLevel == 2)
         {
             babyCry2.Play();
+            particlePleure2.gameObject.SetActive(true);
+            particlePleure2.Play();
         }
         if (currentActivityLevel == 3)
         {
             babyCry2.Play();
+            particlePleure3.gameObject.SetActive(true);
+            particlePleure3.Play();
         }
 
         yield return new WaitForSeconds(2f);
@@ -243,6 +280,15 @@ public class Baby : MonoBehaviour
             }
             yield return null;
         }
+        particlePleure0.gameObject.SetActive(false);
+        particlePleure0.Stop();
+        particlePleure1.gameObject.SetActive(false);
+        particlePleure1.Stop();
+        particlePleure2.gameObject.SetActive(false);
+        particlePleure2.Stop();
+        particlePleure3.gameObject.SetActive(false);
+        particlePleure3.Stop();
+
 
         BabySkillCheck.lastSkillCheckSuccess = false;
         isCrying = false;
@@ -261,7 +307,7 @@ public class Baby : MonoBehaviour
     private void IABaby_Activity_0()
     {
 
-        if (timeBeforeNextAction == 0f)
+        if (timeBeforeNextAction <= 0f)
         {
             if (Random.Range(0f, 1f) < frustration_factor)
             {
@@ -270,7 +316,7 @@ public class Baby : MonoBehaviour
                 Debug.Log("Activit� 0 : Je me d�place dans la cuisine en " + randomPos);
             }
 
-            if (!isCrying)
+            if (!isCrying && Random.Range(0f, 1f) <= cryStat0)
             {
                 StartCoroutine(CryBaby());
             }
@@ -280,11 +326,10 @@ public class Baby : MonoBehaviour
         }
 
     }
-
     private void IABaby_Activity_1()
     {
 
-        if (timeBeforeNextAction == 0f)
+        if (timeBeforeNextAction <= 0f)
         {
             if (Random.Range(0f, 1f) < frustration_factor)
             {
@@ -301,16 +346,20 @@ public class Baby : MonoBehaviour
                 }
             }
 
+            if (!isCrying && Random.Range(0f, 1f) < cryStat1)
+            {
+                StartCoroutine(CryBaby());
+            }
+
             timeBeforeNextAction = timeBetweenEachAction;
             StartCoroutine(IAactionCountdown());
         }
 
     }
-
     private void IABaby_Activity_2()
     {
 
-        if (timeBeforeNextAction == 0f)
+        if (timeBeforeNextAction <= 0f)
         {
             if (Random.Range(0f, 1f) < frustration_factor)
             {
@@ -334,17 +383,20 @@ public class Baby : MonoBehaviour
                     Debug.Log("Activit� 2 : Je me d�place dans le sous-sol en " + randomPos);
                 }
             }
+            if (!isCrying && Random.Range(0f, 1f) < cryStat2)
+            {
+                StartCoroutine(CryBaby());
+            }
 
             timeBeforeNextAction = timeBetweenEachAction;
             StartCoroutine(IAactionCountdown());
         }
 
     }
-
     private void IABaby_Activity_3()
     {
 
-        if (timeBeforeNextAction == 0f)
+        if (timeBeforeNextAction <= 0f)
         {
             if (Random.Range(0f, 1f) < frustration_factor)
             {
@@ -368,6 +420,11 @@ public class Baby : MonoBehaviour
                     agent.SetDestination(randomPos);
                     Debug.Log("Activit� 3 : Je me d�place dans le sous-sol en " + randomPos);
                 }
+            }
+
+            if (!isCrying && Random.Range(0f, 1f) < cryStat3)
+            {
+                StartCoroutine(CryBaby());
             }
 
             timeBeforeNextAction = timeBetweenEachAction;
