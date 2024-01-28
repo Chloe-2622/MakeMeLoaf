@@ -297,6 +297,7 @@ public class Baby : MonoBehaviour
         particlePleure3.gameObject.SetActive(false);
         particlePleure3.Stop();
 
+        MultiplyFrustration((0.75f - 0.25f * (gameManager.playerHumor - 1)));
 
         BabySkillCheck.lastSkillCheckSuccess = false;
         isCrying = false;
