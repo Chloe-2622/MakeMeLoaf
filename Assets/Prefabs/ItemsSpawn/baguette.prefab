@@ -152,11 +152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394500184655589994, guid: 41042de6ec41a274aaceb90583435b59, type: 3}
       propertyPath: label
-      value: Baguette cru
+      value: Baguette
       objectReference: {fileID: 0}
     - target: {fileID: 7325036098664454854, guid: 41042de6ec41a274aaceb90583435b59, type: 3}
       propertyPath: label
-      value: pain_c_cru
+      value: pain_b
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

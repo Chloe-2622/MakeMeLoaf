@@ -78,11 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6394500184655589994, guid: 41042de6ec41a274aaceb90583435b59, type: 3}
       propertyPath: label
-      value: Pain de mie cru
+      value: Pain de mie
       objectReference: {fileID: 0}
     - target: {fileID: 7325036098664454854, guid: 41042de6ec41a274aaceb90583435b59, type: 3}
       propertyPath: label
-      value: pain_m_cru
+      value: pain_m
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -161,6 +161,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3195828791156449804, guid: 1e93da0b7a70ca2438598caffec21b96, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0dc3830f57bb3444e9906210a6c8cd18, type: 2}
     - target: {fileID: 919132149155446097, guid: 1e93da0b7a70ca2438598caffec21b96, type: 3}
       propertyPath: m_Name
       value: PainDeMie 1

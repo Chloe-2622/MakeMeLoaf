@@ -43,11 +43,11 @@ public class Four : MonoBehaviour
 
     public void Start()
     {
-        recettes_F.Add("eclaire", "eclaire_cru");
+        recettes_F.Add("eclaire", "eclair_cru");
         recettes_F.Add("pain_c", "pain_c_cru");
         recettes_F.Add("pain_b", "pain_b_cru");
         recettes_F.Add("pain_chocolat", "pain_chocolat_cru");
-        recettes_F.Add("croissant", "croissant_c");
+        recettes_F.Add("croissant", "croissant_cru");
         recettes_F.Add("pain_m", "pain_m_cru");
 
         /*recettes_F.Add("coal", "eclaire_cru");
@@ -101,7 +101,7 @@ public class Four : MonoBehaviour
                         case "croissant_cru":
                             prefab = croissantPref;
                             break;
-                        case "eclaire_cru":
+                        case "eclair_cru":
                             prefab = eclairePref;
                             break;
                     }

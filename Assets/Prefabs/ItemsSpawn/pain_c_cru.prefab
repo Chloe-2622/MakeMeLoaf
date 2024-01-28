@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4332263089248810374, guid: 85375d77f7780f64c8721b7654710f95, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5385e114b7452746b3dc11d3bb8a4b7, type: 2}
     - target: {fileID: 919132149155446097, guid: 85375d77f7780f64c8721b7654710f95, type: 3}
       propertyPath: m_Name
       value: PainComplet
