@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -995,6 +995,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_3
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2148919885972729745, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 273.73837
@@ -1056,115 +1060,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
---- !u!1 &1473137704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2664551176364917591, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1473137706}
-  - component: {fileID: 1473137705}
-  m_Layer: 0
-  m_Name: UpgradesManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1473137705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3800540932010624379, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473137704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1ae9e12b88fd74297265955a36481f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  totalCost: 0
-  babyCalmFactors:
-  - 0
-  - 0
-  babyCalmCosts: 0000000000000000
-  babyCalm: 0
-  babyCalmTitle: Take this and go play elsewhere
-  babyCalmDescription: The baby takes more time to stress out
-  playerHumorFactors:
-  - 0
-  - 0
-  playerHumorCosts: 0000000000000000
-  playerHumor: 0
-  playerHumorTitle: Comedy lessons
-  playerHumorDescription: Release more stress when interacting with the baby
-  furnaceSpeedFactors:
-  - 0
-  - 0
-  furnaceSpeedCosts: 0000000000000000
-  furnaceSpeed: 0
-  furnaceSpeedTitle: The power of money
-  furnaceSpeedDescription: It's more expenssive, so it cook faster
-  clientsPatienceFactors:
-  - 0
-  - 0
-  clientsPatienceCosts: 0000000000000000
-  clientsPatience: 0
-  clientsPatienceTitle: Society improvement
-  clientsPatienceDescription: Everything would be easier if people knew to be patient
-  clientsMoneyFactors:
-  - 0
-  - 20
-  - 50
-  clientsMoneyCosts: 000000001400000032000000
-  clientsMoney: 0
-  clientsMoneyTitle: Inflation
-  clientsMoneyDescription: 
-  toysCost: 0
-  toys: 0
-  toysTitle: Toys
-  toysDescription: Item that can attract your baby during a certain amount of time
-  camera_1Cost: 0
-  camera_1: 1
-  camera_1Title: Store camera
-  camera_1Description: Place a camera in the store
-  camera_2Cost: 0
-  camera_2: 1
-  camera_2Title: Kitchen camera
-  camera_2Description: Place a camera in the kitchen
-  camera_3Cost: 0
-  camera_3: 1
-  camera_3Title: Storage camera
-  camera_3Description: Place a camera in the storage
-  bellCost: 0
-  bell: 0
-  bellTitle: Bell
-  bellDescription: 
-  tabletCost: 0
-  tablet: 0
-  tabletTitle: Tablet
-  tabletDescription: 
-  costUpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1473137706
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2148919885972729745, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473137704}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 273.73837, y: 701.0835, z: -447.6239}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1537400838
 GameObject:
   m_ObjectHideFlags: 0

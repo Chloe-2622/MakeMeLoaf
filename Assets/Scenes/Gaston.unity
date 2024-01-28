@@ -529,28 +529,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Asset: {fileID: -944628639613478452, guid: fec6fe869171c13449755852834ccb13, type: 3}
   m_ActionId: add6edac-3c3a-4544-b27c-57dbb7e24131
---- !u!114 &664657163 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4196745798089011127, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
-  m_PrefabInstance: {fileID: 8299158835940454071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &668752739 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3801229345967200766, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
-  m_PrefabInstance: {fileID: 8299158835940454071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &731961745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,14 +1103,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4871442395385259796, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
-      propertyPath: moneyText
-      value: 
-      objectReference: {fileID: 664657163}
-    - target: {fileID: 4871442395385259796, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
-      propertyPath: dayTimeText
-      value: 
-      objectReference: {fileID: 668752739}
     - target: {fileID: 6038877092567180432, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
       propertyPath: m_LocalScale.x
       value: 70

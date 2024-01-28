@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gaston.unity
     guid: 7eb8d3647c6e79143a89b63911fc7187
+  - enabled: 1
+    path: Assets/Scenes/Upgrades.unity
+    guid: 759d4e52b60152140ad8756a7fd0a11d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 6cd088ceebe2ef64896babdf32e71f63, type: 2}
