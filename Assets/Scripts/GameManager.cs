@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
 
         while (!hasDayEnded)
         {
-            Debug.Log(babyCalm);
+           // Debug.Log(babyCalm);
             timeOfDay += minutesPerSecond;
             if (i % 2 == 0)
             {

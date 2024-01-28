@@ -1857,7 +1857,7 @@ MonoBehaviour:
   backgroundColor: {r: 0.4784314, g: 0.4784314, b: 0.4784314, a: 1}
   previewColor: {r: 0, g: 1, b: 0.8431373, a: 1}
   sliderColor: {r: 0.17254902, g: 1, b: 0, a: 1}
-  sliderBarsPrefab: {fileID: 3417834857650588253, guid: 03dcd8af921a4724f8689875bfe179f9, type: 3}
+  sliderBarsPrefab: {fileID: 5555361816917199462, guid: 03dcd8af921a4724f8689875bfe179f9, type: 3}
   previewSliderMain: {fileID: 7422454931976094283}
   previewSliderTop: {fileID: 833211044254173954}
   sliderMain: {fileID: 4491195464921929179}

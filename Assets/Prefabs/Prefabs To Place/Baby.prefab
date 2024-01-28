@@ -20214,6 +20214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 460bbf41114ce5b49bc9fd4aebb76acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  presentationMode: 1
   movingSpeed: 1
   timeBeforeStartingMoving: 3
   timeBetweenEachAction: 5
@@ -20228,6 +20229,10 @@ MonoBehaviour:
   activityLevel_3: 360
   gameOver_frustration_factor: 0.8
   timeBeforeNextAction: 0
+  cryStat0: 0.2
+  cryStat1: 0.33333334
+  cryStat2: 0.5
+  cryStat3: 0.5
   RoomDelimitations: {fileID: 0}
   cuisineMin: {x: 0, y: 0, z: 0}
   cuisineMax: {x: 0, y: 0, z: 0}
@@ -20241,6 +20246,7 @@ MonoBehaviour:
   babyImage: {fileID: 0}
   babyBarMinX: -385
   babyAnimator: {fileID: 0}
+  menuBaby: 0
   babyCry0: {fileID: 4307373354819864495}
   babyCry1: {fileID: 3982190366454645096}
   babyCry2: {fileID: 2423225683608733007}
@@ -20251,6 +20257,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   outline: {fileID: 0}
+  particlePleure0: {fileID: 8307714454826953732}
+  particlePleure1: {fileID: 5752898362139159156}
+  particlePleure2: {fileID: 221740719307520931}
+  particlePleure3: {fileID: 71966779997254756}
 --- !u!82 &4307373354819864495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20588,7 +20598,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b71dc4438408e7942a985eac6c5e2dec, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 88c7fcaff65baa347bff36406c9d0146, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -20684,7 +20694,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ac4d2531826eae04e8d2d5703bf103f3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a95e8dfa738cadf43ae6107f0d9f9c99, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -20780,7 +20790,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cf8107cb8e5ecb241a46f0cdb49dfe12, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7291bf9d2b5b74442afcc33a06714645, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
