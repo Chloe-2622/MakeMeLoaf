@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CommandManager : MonoBehaviour
 {
@@ -121,7 +122,7 @@ public class CommandManager : MonoBehaviour
 
     private void EndDay()
     {
-        throw new NotImplementedException(); //TODO
+        SceneManager.LoadScene("Upgrades");
     }
 
     //RETURN True if the command is added, false if the command is not added
