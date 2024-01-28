@@ -8,7 +8,7 @@ public class Select : MonoBehaviour
     private RaycastHit hit;
     [SerializeField] private Camera cam;
     private GameObject selectedO;
-    private Selectable selected;
+    public static Selectable selected;
     private Outline outline;
     [SerializeField] private TextMeshProUGUI labelUI;
 
