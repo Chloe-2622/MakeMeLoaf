@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject TimeUI;
 
+    public bool Focus;
+
 
 
     // Instance statique du GameManager
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
 
         //baby = GameObject.Find("Baby");
 
-        TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
+        // TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
 
         if (Instance == null)
         {

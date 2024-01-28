@@ -21,12 +21,6 @@ public class osuButtonScript : MonoBehaviour
     [SerializeField] public Image circleImage;
     [SerializeField] public Sprite osuImage;
 
-    // Method to receive the reference to the instantiating script
-    public void SetInstantiatingScript(CelianPetrissageScript script)
-    {
-        instantiatingScript = script;
-    }
-
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -70,7 +64,7 @@ public class osuButtonScript : MonoBehaviour
             {
                 gameObject.SetActive(false);
                 Destroy(gameObject, 0f);
-                instantiatingScript.decrHowManyOsu();
+                CelianPetrissageScript.decrHowManyOsu();
             }
         }
     }
