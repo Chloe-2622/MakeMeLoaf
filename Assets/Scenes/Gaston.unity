@@ -211,9 +211,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 375285792}
     - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
+      propertyPath: Focus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
       propertyPath: TimeUI
       value: 
       objectReference: {fileID: 1482058972}
+    - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
+      propertyPath: hasDayStarted
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
+      propertyPath: isTimePassing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3339741334035143688, guid: d96371dfdbbe6ec48a55175e9ffa545a, type: 3}
       propertyPath: debugTimeScale
       value: 1
@@ -21410,6 +21422,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1654258357}
+    - target: {fileID: 4566501109723747775, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4702301987959919126, guid: b75bf183a0b411249b32b0fb640d8b18, type: 3}
       propertyPath: m_Size.x
       value: 0.030798286
