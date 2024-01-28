@@ -360,7 +360,7 @@ public class UpgradesManager : MonoBehaviour
     // Get factors
     public float getBabyCalmFactor() { return babyCalmFactors[babyCalm]; }
     public float getPlayerHumorFactor() { return playerHumorFactors[playerHumor]; }
-    public float getfurnaceSppedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
+    public float getfurnaceSpeedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
     public float getClientsPatienceFactor() { return clientsPatienceFactors[clientsPatience]; }
     public float getClientsMoneyFactor() { return clientsMoneyFactors[clientsMoney]; }
 
