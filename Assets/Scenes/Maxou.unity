@@ -223,6 +223,7 @@ MonoBehaviour:
   minutesPerSecond: 0
   frustration_time_factor: 0
   debugTimeScale: 1
+  TimeUI: {fileID: 0}
 --- !u!4 &122841969
 Transform:
   m_ObjectHideFlags: 0
@@ -2890,6 +2891,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 500917952}
     - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: pain_bPref
+      value: 
+      objectReference: {fileID: 4778241994643074674, guid: 91a358addde61fa4c943f8ca36277b2c, type: 3}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: pain_cPref
+      value: 
+      objectReference: {fileID: 5269896414407179674, guid: 406225ec3a56dab4785e728d1f0078da, type: 3}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: pain_mPref
+      value: 
+      objectReference: {fileID: 4185438701123145638, guid: 08133e08a925bb14bb0658af088c5ebe, type: 3}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
       propertyPath: pate_bPref
       value: 
       objectReference: {fileID: 1778562326}
@@ -2902,6 +2915,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 88803104}
     - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: charbonPref
+      value: 
+      objectReference: {fileID: 2938891429356909361, guid: 85dae2899a7e9d34db8e10e09c8b9c29, type: 3}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: croissantPref
+      value: 
+      objectReference: {fileID: 4802132133034408729, guid: 243c24b04f6635f42916ecc521995e73, type: 3}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
       propertyPath: eclair_cruPref
       value: 
       objectReference: {fileID: 539276699}
@@ -2913,6 +2934,10 @@ PrefabInstance:
       propertyPath: pain_c_cruPref
       value: 
       objectReference: {fileID: 983828779}
+    - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
+      propertyPath: pain_chocoPref
+      value: 
+      objectReference: {fileID: 228910523664638416, guid: 45adaa22dd9c69945adc226cf422a020, type: 3}
     - target: {fileID: 1689997947373489722, guid: 5153797a0c6430b4e897ee6f68df8baa, type: 3}
       propertyPath: pain_m_cruPref
       value: 

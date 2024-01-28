@@ -7,9 +7,9 @@ using UnityEngine.AI;
 public class Baby : MonoBehaviour
 {
     /*
-     * Intégrer musiques et sons bébé.
-     * Bébé qui chiale a intervalle random
-     * Textures prefabs ingrédients
+     * Intï¿½grer musiques et sons bï¿½bï¿½.
+     * Bï¿½bï¿½ qui chiale a intervalle random
+     * Textures prefabs ingrï¿½dients
      * 
      * 
      * 
@@ -42,7 +42,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private float gameOver_frustration_factor;
     [SerializeField] private float timeBeforeNextAction;
 
-    [Header("Pièces")]
+    [Header("Piï¿½ces")]
     [SerializeField] private GameObject RoomDelimitations;
     [SerializeField] private Vector3 cuisineMin;
     [SerializeField] private Vector3 cuisineMax;
@@ -51,7 +51,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private Vector3 sousSolMin;
     [SerializeField] private Vector3 sousSolMax;
 
-    [Header("Probas de déplacement en pièces")]
+    [Header("Probas de dï¿½placement en piï¿½ces")]
     [SerializeField] private float probaCuisine;
     [SerializeField] private float probaMagasin;
     [SerializeField] private float probaSousSol;
@@ -208,7 +208,7 @@ public class Baby : MonoBehaviour
             {
                 Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                 agent.SetDestination(randomPos);
-                Debug.Log("Activité 0 : Je me déplace dans la cuisine en " + randomPos);
+                Debug.Log("Activitï¿½ 0 : Je me dï¿½place dans la cuisine en " + randomPos);
             }
 
             timeBeforeNextAction = timeBetweenEachAction;
@@ -228,12 +228,12 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 1 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 1 : Je me dï¿½place dans la cuisine en " + randomPos);
                 } else
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 1 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 1 : Je me dï¿½place dans le magasin en " + randomPos);
                 }
             }
 
@@ -256,18 +256,18 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans la cuisine en " + randomPos);
                 }
                 else if (randomNum > probaCuisine && randomNum < probaCuisine + probaMagasin)
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans le magasin en " + randomPos);
                 } else
                 {
                     Vector3 randomPos = RandomPositionInArea(sousSolMin, sousSolMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans le sous-sol en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans le sous-sol en " + randomPos);
                 }
             }
 
@@ -290,19 +290,19 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans la cuisine en " + randomPos);
                 }
                 else if (randomNum > probaCuisine && randomNum < probaCuisine + probaMagasin)
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans le magasin en " + randomPos);
                 }
                 else
                 {
                     Vector3 randomPos = RandomPositionInArea(sousSolMin, sousSolMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans le sous-sol en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans le sous-sol en " + randomPos);
                 }
             }
 

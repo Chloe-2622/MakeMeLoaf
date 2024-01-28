@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    // Variable représentant le temps de la journée, un float entre 0 (8h00 du mat début de journée) et 720 (720 minutes, 12h de plus, donc 18h fin de journée)
+    // Variable reprï¿½sentant le temps de la journï¿½e, un float entre 0 (8h00 du mat dï¿½but de journï¿½e) et 720 (720 minutes, 12h de plus, donc 18h fin de journï¿½e)
     public int timeOfDay;
 
     public GameObject baby;
@@ -52,23 +52,22 @@ public class GameManager : MonoBehaviour
 
         upgradeManager = UpgradesManager.Instance;
 
-        TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
+        TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
 
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject); // Gardez le GameManager lors des changements de scène
+            // DontDestroyOnLoad(gameObject); // Gardez le GameManager lors des changements de scï¿½ne
         }
         else
         {
-            Destroy(gameObject); // Détruisez les doublons
+            Destroy(gameObject); // Dï¿½truisez les doublons
         }
 
         if (timeOfDay == 720)
         {
             EndDay();
         }
-
 
         StartCoroutine(PassTime());
         hasDayStarted = true;
