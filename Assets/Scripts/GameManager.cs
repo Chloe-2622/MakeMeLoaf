@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        StartCoroutine(PassTime());
+        //StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
