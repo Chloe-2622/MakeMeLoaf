@@ -105,7 +105,7 @@ public class Movement : MonoBehaviour
         transform.eulerAngles = new Vector3(0, yaw, 0);
         cam.transform.eulerAngles = new Vector3(pitch, yaw, 0);
 
-        if (rb.velocity.magnitude != 0f)
+        if (rb.velocity.magnitude > 0.2f)
         {
             Vector3 pos = cam.transform.localPosition;
             totalDist += rb.velocity.magnitude * Time.deltaTime * NodeSpeed;
@@ -115,6 +115,7 @@ public class Movement : MonoBehaviour
             if (time > timeBetweenStep)
             {
                 time = 0;
+                stepSound.pitch = Random.Range(0.7f, 1.3f);
                 stepSound.Play();
             }
         }
