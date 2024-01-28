@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
         upgradeManager = UpgradesManager.Instance;
 
-        TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
+        // TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
 
         if (Instance == null)
         {
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
             EndDay();
         }
 
-        StartCoroutine(PassTime());
+        // StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
