@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class UpgradesSliders : MonoBehaviour
 {
@@ -63,9 +64,9 @@ public class UpgradesSliders : MonoBehaviour
         numberOfUpgrades = upgradesManager.getNumberOfUpgardes(upgradeType) - 1;
 
         sliderMain.fillAmount = (float)upgradeValue / (float)numberOfUpgrades;
+
         if (upgradeValue == numberOfUpgrades) { sliderTop.fillAmount = 1; }
         else { sliderTop.fillAmount = 0; }
-        sliderTop.fillAmount = 0;
         previewSliderMain.fillAmount = sliderMain.fillAmount;
 
         topFillTime = fillTime * 10 * sliderTop.transform.lossyScale.y * numberOfUpgrades / (10f * sliderMain.transform.lossyScale.y);
@@ -77,25 +78,25 @@ public class UpgradesSliders : MonoBehaviour
         if (iconSprite != null) { icon.sprite = iconSprite; }
         else { icon.gameObject.SetActive(false); }
 
-
+        placeSiderBars();
         setAllColors();
 
         setMinusButtonActive(false);
         setPlusButtonActive(upgradeValue != numberOfUpgrades);
         checkNextUpgrades();
-
-        placeSiderBars();
     }
 
     // Slider Bars
     public void placeSiderBars()
     {
-        for (int i = 1; i < numberOfUpgrades; i++)
+        float step = 20 * sliderMain.transform.localScale.y / (float)numberOfUpgrades;
+        float start = -10 * sliderMain.transform.localScale.y;
+
+        for (int i = 0; i < numberOfUpgrades; i++)
         {
             GameObject bar = Instantiate(sliderBarsPrefab, sliderMain.transform);
-
-            bar.transform.localPosition = new Vector3(0, ((2 * i) / (float)numberOfUpgrades - 1) * 10 * sliderMain.transform.lossyScale.y, 0);
-            bar.transform.localScale = new Vector3(1, bar.transform.localScale.y / sliderMain.transform.lossyScale.y, 1);
+            bar.transform.localPosition = new Vector3(0, start + i*step, 0);
+            bar.transform.localScale = new Vector3(1, bar.transform.localScale.y / sliderMain.transform.localScale.y, 1);
         }
     }
 
@@ -103,31 +104,34 @@ public class UpgradesSliders : MonoBehaviour
     public void increasePreview()
     {
         previewUpgradeValue++;
+
+        setMinusButtonActive(previewUpgradeValue != upgradeValue);
+        setPlusButtonActive(previewUpgradeValue != numberOfUpgrades);
+
         upgradesManager.addToCostToPay(upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue));
-        previewUpgrade();
+        previewRender();
     }
 
     public void decreasePreview()
     {
-        upgradesManager.addToCostToPay(-upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue));
         previewUpgradeValue--;
-        previewUpgrade();
-    }
 
-    public void previewUpgrade()
-    {
         setMinusButtonActive(previewUpgradeValue != upgradeValue);
         setPlusButtonActive(previewUpgradeValue != numberOfUpgrades);
 
-        checkNextUpgrades();
+        upgradesManager.addToCostToPay(-upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue+1));
+        previewRender();
+    }
 
+    public void previewRender()
+    {
         StopAllCoroutines();
         StartCoroutine(FillPreview());
     }
 
     public IEnumerator FillPreview()
     {
-        if (previewUpgradeValue + 1 == numberOfUpgrades && previewSliderTop.fillAmount == 1)
+        if (previewUpgradeValue + 1 == numberOfUpgrades && previewSliderTop.fillAmount != 0)
         {
             float topStart = previewSliderTop.fillAmount;
             float t = 0f;
@@ -149,7 +153,7 @@ public class UpgradesSliders : MonoBehaviour
             yield return null;
         }
 
-        if (previewUpgradeValue == numberOfUpgrades && previewSliderTop.fillAmount == 0)
+        if (previewUpgradeValue == numberOfUpgrades && previewSliderTop.fillAmount != 1)
         {
             float topStart = previewSliderTop.fillAmount;
             float tim = 0f;
@@ -166,6 +170,7 @@ public class UpgradesSliders : MonoBehaviour
     public void applyUpgardes()
     {
         Debug.Log("apply upgrades");
+        Debug.Log(upgradeType + " " + previewUpgradeValue);
         upgradesManager.setUpgradeValue(upgradeType, previewUpgradeValue);
         setButtonsActive(false);
         StartCoroutine(FillSlider());
@@ -173,7 +178,6 @@ public class UpgradesSliders : MonoBehaviour
 
     public IEnumerator FillSlider()
     {
-        Debug.Log("Start Coroutine");
         float start = sliderMain.fillAmount;
         float end = (float)(previewUpgradeValue) / (float)numberOfUpgrades;
         float t = 0f;
@@ -221,7 +225,7 @@ public class UpgradesSliders : MonoBehaviour
     // Info panel
     public void showInfo() { infoPanel.SetActive(true); }
     public void hideInfo() { infoPanel.SetActive(false); }
-
+    
     // Colors
     public void setAllColors()
     {

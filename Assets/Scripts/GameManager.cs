@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
-    // Variable représentant le temps de la journée, un float entre 0 (8h00 du mat début de journée) et 720 (720 minutes, 12h de plus, donc 18h fin de journée)
+    // Variable reprï¿½sentant le temps de la journï¿½e, un float entre 0 (8h00 du mat dï¿½but de journï¿½e) et 720 (720 minutes, 12h de plus, donc 18h fin de journï¿½e)
     public int timeOfDay;
 
     public GameObject baby;
@@ -19,6 +22,27 @@ public class GameManager : MonoBehaviour
 
     public float frustration_time_factor;
 
+    public float debugTimeScale;
+
+    public GameObject TimeUI;
+
+
+    [Header("Upgrades")]
+    public float babyCalm;
+    public float playerHumor;
+    public float furnaceSpeed;
+    public float clientPatience;
+    public float clientMoney;
+    public bool isToyAvailable;
+    public bool isCamera1Available;
+    public bool isCamera2Available;
+    public bool isCamera3Available;
+    public bool isBellAvailable;
+    public bool isTabletAvailable;
+
+
+    private UpgradesManager upgradeManager;
+
     // Instance statique du GameManager
     public static GameManager Instance { get; private set; }
 
@@ -26,21 +50,48 @@ public class GameManager : MonoBehaviour
     {
         //baby = GameObject.Find("Baby");
 
+        upgradeManager = UpgradesManager.Instance;
+
+        TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
+
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject); // Gardez le GameManager lors des changements de scène
+            // DontDestroyOnLoad(gameObject); // Gardez le GameManager lors des changements de scï¿½ne
         }
         else
         {
-            Destroy(gameObject); // Détruisez les doublons
+            Destroy(gameObject); // Dï¿½truisez les doublons
         }
 
+        if (timeOfDay == 720)
+        {
+            EndDay();
+        }
+
+        StartCoroutine(PassTime());
         hasDayStarted = true;
+
+        Time.timeScale = debugTimeScale;
     }
 
+    // Get deds upgrades du Upgrade Manager
+    private void GetUpgrades()
+    {
+        babyCalm = upgradeManager.getBabyCalmFactor();
+        playerHumor = upgradeManager.getPlayerHumorFactor();
+        furnaceSpeed = upgradeManager.getfurnaceSpeedFactor();
+        clientPatience = upgradeManager.getClientsPatienceFactor();
+        clientMoney = upgradeManager.getClientsMoneyFactor();
+        isToyAvailable = upgradeManager.isToysAvailable();
+        isCamera1Available = upgradeManager.isCamera_1Available();
+        isCamera2Available = upgradeManager.isCamera_2Available();
+        isCamera3Available = upgradeManager.isCamera_3Available();
+        isBellAvailable = upgradeManager.isBellAvailable();
+        isTabletAvailable = upgradeManager.isTabletAvailable();
 
-    // Update is called once per frame
+    }
+
     void Update()
     {
         if (hasDayStarted && !isTimePassing)
@@ -50,12 +101,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void EndDay()
+    {
+        hasDayEnded = true;
+        SceneManager.LoadScene("Upgrades");
+
+    }
+
     private IEnumerator PassTime()
     {
+        int i = 0;
+
         while (!hasDayEnded)
         {
             timeOfDay += minutesPerSecond;
-            baby.GetComponent<Baby>().AddFrustration(frustration_time_factor * minutesPerSecond);
+            if (i % 2 == 0)
+            {
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + ":" + (timeOfDay % 60).ToString("D2");
+            } else
+            {
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
+            }
+            i++;
+            baby.GetComponent<Baby>().AddFrustration(babyCalm * minutesPerSecond);
             yield return new WaitForSeconds(1);
         }
         

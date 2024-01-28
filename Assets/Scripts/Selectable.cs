@@ -12,6 +12,7 @@ public class Selectable : MonoBehaviour
 
     void Start()
     {
+        outline = GetComponent<Outline>();
         outline.enabled = false;
     }
 

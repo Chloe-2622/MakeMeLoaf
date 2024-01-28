@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using Unity.VisualScripting;
 
 
 public class UpgradesButtons : MonoBehaviour
 {
-    [SerializeField] UpgradesManager.SingleUpgradesType upgradeType;
-    [SerializeField] Sprite iconSprite;
+    [SerializeField] private UpgradesManager.SingleUpgradesType upgradeType;
+    [SerializeField] private Sprite iconSprite;
 
     [Header("Colors")]
     [SerializeField] private Color availableColor;
@@ -32,9 +34,10 @@ public class UpgradesButtons : MonoBehaviour
     private bool alreadyBought;
     private Image buttonImage;
 
+
     public void OnDisable()
     {
-        upgradesManager.costUpdateEvent.RemoveAllListeners();
+        //upgradesManager.costUpdateEvent.RemoveAllListeners();
     }
     
     void Start()
@@ -56,25 +59,23 @@ public class UpgradesButtons : MonoBehaviour
         if (iconSprite != null) { icon.sprite = iconSprite; }
         else { icon.gameObject.SetActive(false); }
 
-
         isPreviewOn = false;
         checkUpgrades();
     }
 
     public void selectUpgrade()
     {
-        if (!isPreviewOn)
+        isPreviewOn = !isPreviewOn;
+        if (isPreviewOn)
         {
             upgradesManager.addToCostToPay(upgradesManager.getUpgradeCost(upgradeType));
         }
         else
         {
             upgradesManager.addToCostToPay(-upgradesManager.getUpgradeCost(upgradeType));
-            buttonImage.color = availableColor;
         }
-        isPreviewOn = !isPreviewOn;
+        
         setButtonColor();
-        checkUpgrades();
     }
 
     public void applyUpgardes()
@@ -82,6 +83,8 @@ public class UpgradesButtons : MonoBehaviour
         Debug.Log("apply upgrades");
         upgradesManager.buy(upgradeType, isPreviewOn || alreadyBought);
         button.interactable = false;
+        alreadyBought = true;
+        setButtonColor();
     }
 
     public void setButtonColor()
@@ -108,4 +111,7 @@ public class UpgradesButtons : MonoBehaviour
     // Info panel
     public void showInfo() { infoPanel.SetActive(true); }
     public void hideInfo() { infoPanel.SetActive(false); }
+
+    // Activation condition
+
 }

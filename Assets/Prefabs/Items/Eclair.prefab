@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25502fd27ff2b5d47835c74c6f8ee7eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  label: 
+  label: Eclair au chocolat
   outline: {fileID: 0}
 --- !u!1001 &7492790623869551909
 PrefabInstance:

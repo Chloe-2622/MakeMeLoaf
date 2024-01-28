@@ -115,11 +115,6 @@ public class UpgradesManager : MonoBehaviour
         checkErrors();
     }
 
-    public void Start()
-    {
-        costUpdateEvent.Invoke();
-    }
-
     public void setUpgradeValue(MultipleUpgradesType upgradeType, int value)
     {
         switch (upgradeType)
@@ -128,7 +123,7 @@ public class UpgradesManager : MonoBehaviour
                 babyCalm = value;
                 break;
             case MultipleUpgradesType.PlayerHumor:
-                babyCalm = value;
+                playerHumor = value;
                 break;
             case MultipleUpgradesType.FurnaceSpeed:
                 furnaceSpeed = value;
@@ -342,9 +337,14 @@ public class UpgradesManager : MonoBehaviour
     // Money
     public int getMoney() { return money; }
 
-    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke();  Debug.Log(totalCost); }
+    public void addMoney(int moneyDelta) { money += moneyDelta;}
+
+    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke(); }
+
 
     public int getTotalCost() { return totalCost; }
+
+    public void deduceCost() { money -= totalCost; totalCost = 0;  costUpdateEvent.Invoke(); }
 
 
     // Debug
@@ -360,7 +360,7 @@ public class UpgradesManager : MonoBehaviour
     // Get factors
     public float getBabyCalmFactor() { return babyCalmFactors[babyCalm]; }
     public float getPlayerHumorFactor() { return playerHumorFactors[playerHumor]; }
-    public float getfurnaceSppedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
+    public float getfurnaceSpeedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
     public float getClientsPatienceFactor() { return clientsPatienceFactors[clientsPatience]; }
     public float getClientsMoneyFactor() { return clientsMoneyFactors[clientsMoney]; }
 

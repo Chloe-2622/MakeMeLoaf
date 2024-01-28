@@ -200,6 +200,8 @@ MonoBehaviour:
   - {fileID: 7222422392095155314}
   - {fileID: 1680107737209348204}
   - {fileID: 5351880858277435780}
+  clientAgentPrefab: {fileID: 387339672813358043, guid: aa6c8cf2c25a84744a7fca9ff206ae1a, type: 3}
+  clientPatience: 1
 --- !u!1 &3581805175450186918
 GameObject:
   m_ObjectHideFlags: 0
