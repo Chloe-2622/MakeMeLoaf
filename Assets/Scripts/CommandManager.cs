@@ -125,7 +125,7 @@ public class CommandManager : MonoBehaviour
 
     private void EndDay()
     {
-        SceneManager.LoadScene("Upgrades");
+        GameManager.Instance.EndDay();
     }
 
     //RETURN True if the command is added, false if the command is not added
