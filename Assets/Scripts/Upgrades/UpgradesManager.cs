@@ -369,6 +369,7 @@ public class UpgradesManager : MonoBehaviour
     public bool isCamera_1Available() { return camera_1; }
     public bool isCamera_2Available() { return camera_2; }
     public bool isCamera_3Available() { return camera_3; }
+    public List<bool> areCameraAvailable() { return new List<bool> { camera_1, camera_2, camera_3 }; }
     public bool isBellAvailable() { return bell; }
     public bool isTabletAvailable() { return tablet; }
 
