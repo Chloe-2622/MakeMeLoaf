@@ -337,7 +337,7 @@ MonoBehaviour:
   - {fileID: 7222422392095155314}
   - {fileID: 1680107737209348204}
   - {fileID: 5351880858277435780}
-  dayTimeText: {fileID: 0}
+  dayTimeText: {fileID: 3035137244731987666}
   moneyText: {fileID: 0}
   clientAgentPrefab: {fileID: 387339672813358043, guid: aa6c8cf2c25a84744a7fca9ff206ae1a, type: 3}
 --- !u!1 &3581805175450186918

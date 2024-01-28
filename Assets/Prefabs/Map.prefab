@@ -1540,11 +1540,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6720641410914314296, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+      propertyPath: moneyText
+      value: 
+      objectReference: {fileID: 4196745798089011127}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+--- !u!114 &4196745798089011127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2658112088149450907, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
+  m_PrefabInstance: {fileID: 2224308505561829164}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4265422160092935621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2733550936299387625, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
