@@ -3,7 +3,17 @@ guid: 0f8397f898130ce45b60db4cd6c097e5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 02b510c1ec42b8d4988959c91570c1c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pain
+    second: {fileID: 2100000, guid: 0dc3830f57bb3444e9906210a6c8cd18, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
