@@ -154,8 +154,11 @@ public class Craft : MonoBehaviour
                 DeletUsedItem(resultat, recettes_M);
                 break;
             case CraftType.PlanDeTravail:
+                Debug.Log("Debug 1");
                 resultat = FindCraft(recettes_PdT);
+                Debug.Log("Debug 1.2" + resultat);
                 if (resultat == "rien") yield break;
+                Debug.Log("Debug 2" + resultat);
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_PdT);
                 break;
@@ -196,6 +199,7 @@ public class Craft : MonoBehaviour
                 Instantiate(pain_c_cruPref, transform.position + Vector3.up, Quaternion.identity);
                 return;
             case "pain_b_cru":
+                Debug.Log("pain_b_cru_spawn" + pain_b_cruPref);
                 Instantiate(pain_b_cruPref, transform.position + Vector3.up, Quaternion.identity);
                 return;
             case "pain_m_cru":
