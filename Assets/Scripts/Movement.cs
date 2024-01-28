@@ -45,20 +45,26 @@ public class Movement : MonoBehaviour
     private float yaw = 0;
     private float pitch = 0;
 
+    private GameManager gM;
     // Start is called before the first frame update
     void Start()
     {
+        gM = GameManager.Instance;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         height = playerCollider.height;
         baseCamHeight = cam.transform.localPosition.y;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // deplacement
-        movement = MoveDir(moveInput.action.ReadValue<Vector2>());
+        if (gM.Focus) movement = MoveDir(moveInput.action.ReadValue<Vector2>());
+        else movement = Vector3.zero;
 
         // anti patinoire
         isGrounded = Physics.Raycast(transform.position, Vector3.down, height + 0.2f, whatIsGround);
@@ -73,8 +79,13 @@ public class Movement : MonoBehaviour
 
         // rotation cam
 
-        if (Input.GetKeyDown(KeyCode.Escape)) DebugFocus = !DebugFocus;
-        if(DebugFocus) mouse = lookInput.action.ReadValue<Vector2>();
+        if (gM.Focus == Cursor.visible) changeFocus(gM.Focus);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gM.Focus = changeFocus(gM.Focus);
+        }
+        if (gM.Focus) mouse = lookInput.action.ReadValue<Vector2>();
+        else mouse = Vector3.zero;
         /*transform.Rotate(Vector3.up, mouse.x * sensi / 100, Space.World);
         cam.transform.Rotate(Vector3.right, mouse.y * sensi / 100, Space.Self);
         if (!(cam.transform.localEulerAngles.x < 65 || cam.transform.localEulerAngles.x > 295))
@@ -103,6 +114,13 @@ public class Movement : MonoBehaviour
 
 
 
+    }
+
+    private bool changeFocus(bool state)
+    {
+        Cursor.visible = !state;
+        Cursor.lockState = state ? CursorLockMode.Locked : CursorLockMode.None;
+        return !state;
     }
 
     private Vector3 MoveDir(Vector2 vec2)

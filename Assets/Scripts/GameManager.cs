@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject TimeUI;
 
+    public bool Focus;
 
     [Header("Upgrades")]
     public float babyCalm;
