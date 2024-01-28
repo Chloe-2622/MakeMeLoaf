@@ -41,7 +41,7 @@ public class CelianPetrissageScript : MonoBehaviour
         float randomY = Random.Range(-540f, 540f);
         */
         prefab = prefabToSpawn;
-        //Debug.Log(prefab);
+        Debug.Log(prefab);
         canvasSize = canvasRectTransform.sizeDelta;
 
         osuSize = osuRectTransform.sizeDelta;
@@ -64,14 +64,17 @@ public class CelianPetrissageScript : MonoBehaviour
     [ContextMenu("start game")]
     public IEnumerator StartGame()
     {
+        
         howManyWaves = 5;
         howManyPerWave = 5;
+        Debug.Log(howManyPerWave);
         spawnList = new List<Vector3>();
+        
         for (int i = 0; i < howManyPerWave; i++)
         {
             SpawnPrefab();
         }
-
+        
         while (howManyWaves > 0)
         {
             if (howManyOsu == 0)
@@ -87,12 +90,16 @@ public class CelianPetrissageScript : MonoBehaviour
             yield return null;
         }
         while (howManyOsu > 0) yield return null;
+        
+        Debug.Log(howManyOsu);
+        Debug.Log("t3");
         gM.Focus = true;
+        yield break;
     }
 
     static void SpawnPrefab(){
         howManyOsu++;
-        
+        Debug.Log("spawn");
 
 
     // Calculate the half size of the canvas
@@ -100,14 +107,14 @@ public class CelianPetrissageScript : MonoBehaviour
         float halfCanvasHeight = canvasSize.y / 2f;
 
         Vector3 randomPosition = new Vector3(0f, 0f, 0f);
-        do {
-            // Calculate random position within canvas bounds
-            float randomX = Random.Range(-halfCanvasWidth + osuSize.x/2 , halfCanvasWidth - osuSize.x/2);
+        //do {
+        // Calculate random position within canvas bounds
+        float randomX = Random.Range(-halfCanvasWidth + osuSize.x/2 , halfCanvasWidth - osuSize.x/2);
             
-            float randomY = Random.Range(-halfCanvasHeight + osuSize.y/2, halfCanvasHeight - osuSize.y/2);
-            randomPosition = new Vector3(randomX, randomY, 0f);
-            //Debug.Log(randomPosition);
-        } while (isTooClose(randomPosition));
+        float randomY = Random.Range(-halfCanvasHeight + osuSize.y/2, halfCanvasHeight - osuSize.y/2);
+        randomPosition = new Vector3(randomX, randomY, 0f);
+        //Debug.Log(randomPosition);
+        //} while (isTooClose(randomPosition));
 
         //Debug.Log(randomPosition);
 
@@ -125,7 +132,7 @@ public class CelianPetrissageScript : MonoBehaviour
 
     static public bool isTooClose(Vector3 randomPosition){
         for (int i = 0; i < spawnList.Count; i++){
-            Debug.Log(i);
+            // Debug.Log(i);
             if (Vector3.Distance(spawnList[i], randomPosition) < osuSize.x){
                 return(true);
             }
