@@ -23,6 +23,7 @@ public class Baby : MonoBehaviour
 
     [Header("-------------- Mode présentation --------------")]
     [SerializeField] private bool presentationMode;
+    [SerializeField] private int gameSpeed;
 
     [Header("Stats")]
     [SerializeField] private float movingSpeed;
@@ -81,7 +82,8 @@ public class Baby : MonoBehaviour
     [SerializeField] private AudioSource gameMusic0;
     [SerializeField] private AudioSource gameMusic1;
     [SerializeField] private AudioSource gameMusic2;
-    [SerializeField] private AudioSource rire;
+    [SerializeField] private AudioSource rire1;
+    [SerializeField] private AudioSource rire2;
 
     [Header("Scene objects")]
     [SerializeField] private LayerMask bebeMask;
@@ -136,7 +138,7 @@ public class Baby : MonoBehaviour
             cryStat2 = 1f;
             cryStat3 = 1f;
 
-            gameManager.minutesPerSecond = 50;
+            gameManager.minutesPerSecond = gameSpeed;
         }
     }
 
@@ -295,6 +297,7 @@ public class Baby : MonoBehaviour
         particlePleure3.gameObject.SetActive(false);
         particlePleure3.Stop();
 
+        MultiplyFrustration((0.75f - 0.25f * (gameManager.playerHumor - 1)));
 
         BabySkillCheck.lastSkillCheckSuccess = false;
         isCrying = false;
@@ -305,7 +308,13 @@ public class Baby : MonoBehaviour
         gameMusic1.Stop();
         gameMusic2.Stop();
         gameMusic0.Play();
-        rire.Play();
+        if (Random.Range(0,2) == 0)
+        {
+            rire1.Play();
+        } else
+        {
+            rire2.Play();
+        }
 
         yield return null;
     }
