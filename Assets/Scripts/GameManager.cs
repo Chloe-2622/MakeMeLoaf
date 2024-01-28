@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
 
         //baby = GameObject.Find("Baby");
 
-        TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
+        TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
 
         if (Instance == null)
         {
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
 
 
-        //StartCoroutine(PassTime());
+        StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
