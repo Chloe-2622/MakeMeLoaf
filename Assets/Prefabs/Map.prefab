@@ -1049,6 +1049,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: 2100000, guid: 58d3ff63c55728148aa6706ff23f6cfb, type: 2}
+    - target: {fileID: -7029948723529949830, guid: 65b07ec315ac13640bafbc8cc524d6db, type: 3}
+      propertyPath: m_Name
+      value: SolMurPlafond
+      objectReference: {fileID: 0}
     - target: {fileID: 882129737928793925, guid: 65b07ec315ac13640bafbc8cc524d6db, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1085,7 +1089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2414259655730944659, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2733550936299387625, guid: 0bd960466ac4b6a4ab0585ce77382efe, type: 3}
       propertyPath: m_LocalScale.x
@@ -1779,7 +1783,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.035701074, y: 0.024966618, z: 0.028609479}
   m_Center: {x: 2.2056227e-17, y: -0.0024833118, z: 0.014363016}
@@ -1790,7 +1794,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2758958466176151796}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.018000001, y: 0.012, z: 0.014}

@@ -9,6 +9,8 @@ public class Craft : MonoBehaviour
     private Dictionary<string, string[]> recettes_PdT = new Dictionary<string, string[]>();
     private Dictionary<string, string[]> recettes_F = new Dictionary<string, string[]>();
     private Dictionary<string, string[]> recettes_M = new Dictionary<string, string[]>();
+    [SerializeField] private CelianPetrissageScript petScript;
+    [SerializeField] private CelianMelangeScript malScript;
 
     [Header("prefab inter")]
     [SerializeField] private GameObject pate_cPref;
@@ -43,11 +45,13 @@ public class Craft : MonoBehaviour
         Melange
     }
 
-    [SerializeField] private CraftType stationType; 
+    [SerializeField] private CraftType stationType;
 
+    private GameManager gM;
     // Start is called before the first frame update
     void Start()
     {
+        gM = GameManager.Instance;
         recettes_P.Add("pate_m", new string[] { "farine_b", "lait", "sucre", "beurre" });
         recettes_P.Add("pate_c", new string[] { "farine_c", "eau" });
         recettes_P.Add("pate_b", new string[] { "farine_b", "eau" });
@@ -132,26 +136,34 @@ public class Craft : MonoBehaviour
         {
             case CraftType.Petrin:
                 resultat = FindCraft(recettes_P);
+                if (resultat == "rien") return;
+                gM.Focus = false;
+                StartCoroutine(petScript.StartGame());
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_P);
                 break;
             case CraftType.Melange:
                 resultat = FindCraft(recettes_M);
+                if (resultat == "rien") return;
+                gM.Focus = false;
+                StartCoroutine(malScript.StartGame());
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_M);
                 break;
             case CraftType.PlanDeTravail:
                 resultat = FindCraft(recettes_PdT);
+                if (resultat == "rien") return;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_PdT);
                 break;
             case CraftType.Four:
                 resultat = FindCraft(recettes_F);
+                if (resultat == "rien") return;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_F);
                 break;
         }
-
+        return;
 
     }
 
@@ -183,13 +195,23 @@ public class Craft : MonoBehaviour
 
     private void DeletUsedItem(string name, Dictionary<string, string[]> recettes)
     {
+        List<KeyValuePair<int, Ingredient>> toDestroy = new List<KeyValuePair<int, Ingredient>>();
         string[] recette = recettes[name];
         foreach(string ingredient in recette)
         {
             foreach (KeyValuePair<int, Ingredient> item in inventory)
             {
-                if (item.Value.label == ingredient) Destroy(item.Value.gameObject);
+                if (item.Value.label == ingredient)
+                {
+                    toDestroy.Add(item);
+                }
             }
+        }
+
+        foreach (KeyValuePair<int, Ingredient> item in toDestroy)
+        {
+            Destroy(item.Value.gameObject);
+            inventory.Remove(item.Key);
         }
     }
 }

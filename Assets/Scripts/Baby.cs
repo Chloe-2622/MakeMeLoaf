@@ -6,6 +6,20 @@ using UnityEngine.AI;
 
 public class Baby : MonoBehaviour
 {
+    /*
+     * Intï¿½grer musiques et sons bï¿½bï¿½.
+     * Bï¿½bï¿½ qui chiale a intervalle random
+     * Textures prefabs ingrï¿½dients
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
+
 
     [Header("Stats")]
     [SerializeField] private float movingSpeed;
@@ -14,8 +28,12 @@ public class Baby : MonoBehaviour
     [SerializeField] private float timeBeforeStartingMoving;
     [SerializeField] private float timeBetweenEachAction;
     [SerializeField] private float total_frustration;
-    [SerializeField] private float frustration_factor;
     [SerializeField] private float frustration_multiplier;
+    [SerializeField] private bool isCrying;
+    [SerializeField] private BabySkillCheck babySkillCheck;
+
+    [Header("-------------- Frustration Factor --------------")]
+    [SerializeField] private float frustration_factor;
 
     [Header("Activity level")]
     [SerializeField] private int currentActivityLevel;
@@ -25,7 +43,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private float gameOver_frustration_factor;
     [SerializeField] private float timeBeforeNextAction;
 
-    [Header("Pièces")]
+    [Header("PiÃ¨ces")]
     [SerializeField] private GameObject RoomDelimitations;
     [SerializeField] private Vector3 cuisineMin;
     [SerializeField] private Vector3 cuisineMax;
@@ -34,7 +52,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private Vector3 sousSolMin;
     [SerializeField] private Vector3 sousSolMax;
 
-    [Header("Probas de déplacement en pièces")]
+    [Header("Probas de dÃ¨placement en piï¿½ces")]
     [SerializeField] private float probaCuisine;
     [SerializeField] private float probaMagasin;
     [SerializeField] private float probaSousSol;
@@ -46,15 +64,30 @@ public class Baby : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator babyAnimator;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource babyCry0;
+    [SerializeField] private AudioSource babyCry1;
+    [SerializeField] private AudioSource babyCry2;
+    [SerializeField] private AudioSource gameMusic0;
+    [SerializeField] private AudioSource gameMusic1;
+    [SerializeField] private AudioSource gameMusic2;
+
+    [Header("Scene objects")]
+    [SerializeField] private LayerMask bebeMask;
+    [SerializeField] private Outline outline;
+
 
     private NavMeshAgent agent;
-
     private GameManager gameManager;
 
     private void Awake()
     {
+        total_frustration = 1f;
+
         gameManager = GameManager.Instance;
         babyAnimator = transform.Find("Model").GetComponent<Animator>();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
 
         // Rooms delimitations;
 
@@ -79,21 +112,45 @@ public class Baby : MonoBehaviour
 
     void Update()
     {
+        // Animator
+        BabyAnimator();
+
+        // Frustration
+        frustration_factor = frustration_factor_formula();
+
+        // Activity level
+        ChangeActivityLevel();
+
+        // Change time before next action
+        ChangeTimeBetweenNextAction();
+
+        // Change baby speed over time
+        ChangeSpeedOverTime();
+
+        // 
+
+        babyImage.transform.localPosition = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(babyBarMinX, 0, 0), frustration_factor / 0.8f);
+
+    }
+
+    private void BabyAnimator()
+    {
         if (agent.velocity.magnitude > 0)
         {
             babyAnimator.SetBool("isWalking", true);
             babyAnimator.speed = 2 * agent.velocity.magnitude;
-        } else
+        }
+        else
         {
             babyAnimator.SetBool("isWalking", false);
         }
-
-        frustration_factor = total_frustration / (1 + total_frustration);
-        // Debug.Log(frustration_factor / gameOver_frustration_factor);
-        // babyImage.transform.position = Vector3.Lerp(babyImage.transform.position, new Vector3(babyBarMinX, babyImage.transform.position.y, babyImage.transform.position.z), frustration_factor / gameOver_frustration_factor);
-        babyImage.rectTransform.anchoredPosition = new Vector2(-frustration_factor*400.0f, 0);
-
-
+    }
+    private float frustration_factor_formula()
+    {
+        return 2 * (total_frustration / (1 + total_frustration) - 0.5f);
+    }
+    private void ChangeActivityLevel()
+    {
         if (gameManager.timeOfDay == activityLevel_1) { currentActivityLevel = 1; probaCuisine = 0.5f; probaMagasin = 0.5f; }
         if (gameManager.timeOfDay == activityLevel_2) { currentActivityLevel = 2; probaCuisine = 0.2f; probaMagasin = 0.5f; probaSousSol = 0.3f; }
         if (gameManager.timeOfDay == activityLevel_3) { currentActivityLevel = 3; probaCuisine = 0.1f; probaMagasin = 0.4f; probaSousSol = 0.5f; }
@@ -115,6 +172,91 @@ public class Baby : MonoBehaviour
             IABaby_Activity_3();
         }
     }
+    private void ChangeTimeBetweenNextAction()
+    {
+        timeBetweenEachAction = 5 + (1 - frustration_factor) * 15f;
+    }
+    private void ChangeSpeedOverTime()
+    {
+        agent.speed = (1 + 2 * frustration_factor) * movingSpeed;
+    }
+
+    private IEnumerator CryBaby()
+    {
+        isCrying = true;
+
+        gameMusic0.Pause();
+
+        if (currentActivityLevel == 0)
+        {
+            babyCry0.Play();
+        }
+        if (currentActivityLevel == 1)
+        {
+            babyCry1.Play();
+        }
+        if (currentActivityLevel == 2)
+        {
+            babyCry2.Play();
+        }
+        if (currentActivityLevel == 3)
+        {
+            babyCry2.Play();
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        if (currentActivityLevel == 0)
+        {
+            gameMusic1.Play();
+        }
+        if (currentActivityLevel == 1)
+        {
+            gameMusic1.Play();
+        }
+        if (currentActivityLevel == 2)
+        {
+            gameMusic2.Play();
+        }
+        if (currentActivityLevel == 3)
+        {
+            gameMusic2.Play();
+        }
+
+        while (isCrying && BabySkillCheck.lastSkillCheckSuccess == false)
+        {
+
+            Debug.DrawLine(gameManager.mainCamera.transform.position, gameManager.mainCamera.transform.position + 1f * gameManager.mainCamera.transform.forward);
+
+            if (Physics.Raycast(gameManager.mainCamera.transform.position,gameManager.mainCamera.transform.forward,2f, bebeMask))
+            {
+                outline.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E) && BabySkillCheck.lastSkillCheckSuccess == false)
+                {
+                    BabySkillCheck.StartBabySkillCheck();
+                    Debug.Log("Starting baby skillcheck");
+                }
+            } else
+            {
+                outline.enabled = false;
+            }
+            yield return null;
+        }
+
+        BabySkillCheck.lastSkillCheckSuccess = false;
+        isCrying = false;
+        outline.enabled = false;
+        babyCry0.Stop();
+        babyCry1.Stop();
+        babyCry2.Stop();
+        gameMusic1.Stop();
+        gameMusic2.Stop();
+        gameMusic0.UnPause();
+
+        yield return null;
+    }
+
 
     private void IABaby_Activity_0()
     {
@@ -125,7 +267,12 @@ public class Baby : MonoBehaviour
             {
                 Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                 agent.SetDestination(randomPos);
-                Debug.Log("Activité 0 : Je me déplace dans la cuisine en " + randomPos);
+                Debug.Log("Activitï¿½ 0 : Je me dï¿½place dans la cuisine en " + randomPos);
+            }
+
+            if (!isCrying)
+            {
+                StartCoroutine(CryBaby());
             }
 
             timeBeforeNextAction = timeBetweenEachAction;
@@ -145,12 +292,12 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 1 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 1 : Je me dï¿½place dans la cuisine en " + randomPos);
                 } else
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 1 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 1 : Je me dï¿½place dans le magasin en " + randomPos);
                 }
             }
 
@@ -173,18 +320,18 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans la cuisine en " + randomPos);
                 }
                 else if (randomNum > probaCuisine && randomNum < probaCuisine + probaMagasin)
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans le magasin en " + randomPos);
                 } else
                 {
                     Vector3 randomPos = RandomPositionInArea(sousSolMin, sousSolMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 2 : Je me déplace dans le sous-sol en " + randomPos);
+                    Debug.Log("Activitï¿½ 2 : Je me dï¿½place dans le sous-sol en " + randomPos);
                 }
             }
 
@@ -207,19 +354,19 @@ public class Baby : MonoBehaviour
                 {
                     Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans la cuisine en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans la cuisine en " + randomPos);
                 }
                 else if (randomNum > probaCuisine && randomNum < probaCuisine + probaMagasin)
                 {
                     Vector3 randomPos = RandomPositionInArea(magasinMin, magasinMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans le magasin en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans le magasin en " + randomPos);
                 }
                 else
                 {
                     Vector3 randomPos = RandomPositionInArea(sousSolMin, sousSolMax);
                     agent.SetDestination(randomPos);
-                    Debug.Log("Activité 3 : Je me déplace dans le sous-sol en " + randomPos);
+                    Debug.Log("Activitï¿½ 3 : Je me dï¿½place dans le sous-sol en " + randomPos);
                 }
             }
 
@@ -233,7 +380,10 @@ public class Baby : MonoBehaviour
     {
         total_frustration += frustration;
     }
-
+    public void MultiplyFrustration(float frustrationFactor)
+    {
+        total_frustration *= frustrationFactor;
+    }
     private IEnumerator IAactionCountdown()
     {
         while (timeBeforeNextAction > 0)
@@ -243,12 +393,10 @@ public class Baby : MonoBehaviour
         }
         timeBeforeNextAction = 0f;
     }
-
     private Vector3 RandomPositionInArea(Vector3 areaMin, Vector3 areaMax)
     {
         return new Vector3(Random.Range(areaMin.x, areaMax.x), areaMin.y, Random.Range(areaMin.z, areaMax.z));
     }
-
     public IEnumerator TurnTo(Vector3 targetPosition)
     {
         // Calculate the rotation needed to face the target position
