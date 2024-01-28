@@ -127,6 +127,10 @@ public class Baby : MonoBehaviour
         // Change baby speed over time
         ChangeSpeedOverTime();
 
+        // 
+
+        babyImage.transform.localPosition = Vector3.Lerp(new Vector3(0, 0, 0), new Vector3(babyBarMinX, 0, 0), frustration_factor / 0.8f);
+
     }
 
     private void BabyAnimator()

@@ -440,6 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOfDay: 0
   baby: {fileID: 0}
+  mainCamera: {fileID: 0}
   hasDayStarted: 0
   hasDayEnded: 0
   isTimePassing: 0
@@ -6139,7 +6140,7 @@ MonoBehaviour:
   playerCollider: {fileID: 1817973873}
   moveInput: {fileID: 8302763230067029492, guid: fec6fe869171c13449755852834ccb13, type: 3}
   lookInput: {fileID: -2548339046391342230, guid: fec6fe869171c13449755852834ccb13, type: 3}
-  speed: 15
+  speed: 750
   drag: 5
   maxSpeed: 8
   sensi: 50

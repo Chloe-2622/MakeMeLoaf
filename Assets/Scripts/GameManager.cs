@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        //baby = GameObject.Find("Baby");
+        // baby = GameObject.Find("Baby");
 
-        upgradeManager = UpgradesManager.Instance;
+        // upgradeManager = UpgradesManager.Instance;
         mainCamera = GameObject.Find("Player").transform.Find("Main Camera").GetComponent<Camera>();
 
         // TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
@@ -72,9 +72,9 @@ public class GameManager : MonoBehaviour
             EndDay();
         }
 
-        GetUpgrades();
+        // GetUpgrades();
 
-        StartCoroutine(PassTime());
+        // StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;

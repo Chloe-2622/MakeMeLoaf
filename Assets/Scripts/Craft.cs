@@ -128,7 +128,7 @@ public class Craft : MonoBehaviour
         return false;
     }
 
-    public IEnumerable MakeCraft()
+    public void MakeCraft()
     {
         PrintDic();
         string resultat = "";
@@ -136,7 +136,7 @@ public class Craft : MonoBehaviour
         {
             case CraftType.Petrin:
                 resultat = FindCraft(recettes_P);
-                if (resultat == "rien") return null;
+                if (resultat == "rien") return;
                 gM.Focus = false;
                 StartCoroutine(petScript.StartGame());
                 SpawnObject(resultat);
@@ -144,7 +144,7 @@ public class Craft : MonoBehaviour
                 break;
             case CraftType.Melange:
                 resultat = FindCraft(recettes_M);
-                if (resultat == "rien") return null;
+                if (resultat == "rien") return;
                 gM.Focus = false;
                 StartCoroutine(malScript.StartGame());
                 SpawnObject(resultat);
@@ -152,18 +152,18 @@ public class Craft : MonoBehaviour
                 break;
             case CraftType.PlanDeTravail:
                 resultat = FindCraft(recettes_PdT);
-                if (resultat == "rien") return null;
+                if (resultat == "rien") return;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_PdT);
                 break;
             case CraftType.Four:
                 resultat = FindCraft(recettes_F);
-                if (resultat == "rien") return null;
+                if (resultat == "rien") return;
                 SpawnObject(resultat);
                 DeletUsedItem(resultat, recettes_F);
                 break;
         }
-        return null;
+        return;
 
     }
 
