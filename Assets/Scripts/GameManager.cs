@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int timeOfDay;
 
     public GameObject baby;
+    public Camera mainCamera;
 
     public bool hasDayStarted;
     public bool hasDayEnded;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         //baby = GameObject.Find("Baby");
 
         upgradeManager = UpgradesManager.Instance;
+        mainCamera = GameObject.Find("Player").transform.Find("Main Camera").GetComponent<Camera>();
 
         // TimeUI.GetComponent<TextMeshProUGUI>().text = "08:00";
 
@@ -70,7 +72,9 @@ public class GameManager : MonoBehaviour
             EndDay();
         }
 
-        // StartCoroutine(PassTime());
+        GetUpgrades();
+
+        StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
@@ -115,6 +119,7 @@ public class GameManager : MonoBehaviour
 
         while (!hasDayEnded)
         {
+            Debug.Log(babyCalm);
             timeOfDay += minutesPerSecond;
             if (i % 2 == 0)
             {

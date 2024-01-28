@@ -30,6 +30,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private float total_frustration;
     [SerializeField] private float frustration_multiplier;
     [SerializeField] private bool isCrying;
+    [SerializeField] private BabySkillCheck babySkillCheck;
 
     [Header("-------------- Frustration Factor --------------")]
     [SerializeField] private float frustration_factor;
@@ -42,7 +43,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private float gameOver_frustration_factor;
     [SerializeField] private float timeBeforeNextAction;
 
-    [Header("Pi�ces")]
+    [Header("Pièces")]
     [SerializeField] private GameObject RoomDelimitations;
     [SerializeField] private Vector3 cuisineMin;
     [SerializeField] private Vector3 cuisineMax;
@@ -51,7 +52,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private Vector3 sousSolMin;
     [SerializeField] private Vector3 sousSolMax;
 
-    [Header("Probas de d�placement en pi�ces")]
+    [Header("Probas de dèplacement en pi�ces")]
     [SerializeField] private float probaCuisine;
     [SerializeField] private float probaMagasin;
     [SerializeField] private float probaSousSol;
@@ -67,8 +68,15 @@ public class Baby : MonoBehaviour
     [SerializeField] private AudioSource babyCry0;
     [SerializeField] private AudioSource babyCry1;
     [SerializeField] private AudioSource babyCry2;
+    [SerializeField] private AudioSource gameMusic0;
+    [SerializeField] private AudioSource gameMusic1;
+    [SerializeField] private AudioSource gameMusic2;
 
-    
+    [Header("Scene objects")]
+    [SerializeField] private LayerMask bebeMask;
+    [SerializeField] private Outline outline;
+
+
     private NavMeshAgent agent;
     private GameManager gameManager;
 
@@ -78,6 +86,8 @@ public class Baby : MonoBehaviour
 
         gameManager = GameManager.Instance;
         babyAnimator = transform.Find("Model").GetComponent<Animator>();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
 
         // Rooms delimitations;
 
@@ -111,11 +121,8 @@ public class Baby : MonoBehaviour
         // Activity level
         ChangeActivityLevel();
 
-        // IA Cry baby
-        CryBaby();
-
         // Change time before next action
-        ChangeTimeBeforeNextAction();
+        ChangeTimeBetweenNextAction();
 
         // Change baby speed over time
         ChangeSpeedOverTime();
@@ -161,9 +168,9 @@ public class Baby : MonoBehaviour
             IABaby_Activity_3();
         }
     }
-    private void ChangeTimeBeforeNextAction()
+    private void ChangeTimeBetweenNextAction()
     {
-        timeBeforeNextAction = (1 - frustration_factor) * 30f;
+        timeBetweenEachAction = 5 + (1 - frustration_factor) * 15f;
     }
     private void ChangeSpeedOverTime()
     {
@@ -173,6 +180,8 @@ public class Baby : MonoBehaviour
     private IEnumerator CryBaby()
     {
         isCrying = true;
+
+        gameMusic0.Pause();
 
         if (currentActivityLevel == 0)
         {
@@ -191,10 +200,56 @@ public class Baby : MonoBehaviour
             babyCry2.Play();
         }
 
-        while (isCrying)
+        yield return new WaitForSeconds(2f);
+
+        if (currentActivityLevel == 0)
+        {
+            gameMusic1.Play();
+        }
+        if (currentActivityLevel == 1)
+        {
+            gameMusic1.Play();
+        }
+        if (currentActivityLevel == 2)
+        {
+            gameMusic2.Play();
+        }
+        if (currentActivityLevel == 3)
+        {
+            gameMusic2.Play();
+        }
+
+        while (isCrying && BabySkillCheck.lastSkillCheckSuccess == false)
         {
 
+            Debug.DrawLine(gameManager.mainCamera.transform.position, gameManager.mainCamera.transform.position + 1f * gameManager.mainCamera.transform.forward);
+
+            if (Physics.Raycast(gameManager.mainCamera.transform.position,gameManager.mainCamera.transform.forward,2f, bebeMask))
+            {
+                outline.enabled = true;
+
+                if (Input.GetKeyDown(KeyCode.E) && BabySkillCheck.lastSkillCheckSuccess == false)
+                {
+                    BabySkillCheck.StartBabySkillCheck();
+                    Debug.Log("Starting baby skillcheck");
+                }
+            } else
+            {
+                outline.enabled = false;
+            }
+            yield return null;
         }
+
+        BabySkillCheck.lastSkillCheckSuccess = false;
+        isCrying = false;
+        outline.enabled = false;
+        babyCry0.Stop();
+        babyCry1.Stop();
+        babyCry2.Stop();
+        gameMusic1.Stop();
+        gameMusic2.Stop();
+        gameMusic0.UnPause();
+
         yield return null;
     }
 
@@ -209,6 +264,11 @@ public class Baby : MonoBehaviour
                 Vector3 randomPos = RandomPositionInArea(cuisineMin, cuisineMax);
                 agent.SetDestination(randomPos);
                 Debug.Log("Activit� 0 : Je me d�place dans la cuisine en " + randomPos);
+            }
+
+            if (!isCrying)
+            {
+                StartCoroutine(CryBaby());
             }
 
             timeBeforeNextAction = timeBetweenEachAction;

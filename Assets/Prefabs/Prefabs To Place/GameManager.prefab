@@ -46,11 +46,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeOfDay: 0
   baby: {fileID: 0}
+  mainCamera: {fileID: 0}
   hasDayStarted: 0
   hasDayEnded: 0
   isTimePassing: 0
   playerRange: 2
-  minutesPerSecond: 0
+  minutesPerSecond: 1
   frustration_time_factor: 0.01666667
-  debugTimeScale: 0
+  debugTimeScale: 1
   TimeUI: {fileID: 0}
+  babyCalm: 0
+  playerHumor: 0
+  furnaceSpeed: 0
+  clientPatience: 0
+  clientMoney: 0
+  isToyAvailable: 0
+  isCamera1Available: 0
+  isCamera2Available: 0
+  isCamera3Available: 0
+  isBellAvailable: 0
+  isTabletAvailable: 0
