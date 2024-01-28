@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public float debugTimeScale;
 
     public GameObject TimeUI;
+    public GameObject GameOverPanel;
 
     public bool Focus;
 
@@ -106,11 +107,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void EndDay()
+    public void EndDay()
     {
         hasDayEnded = true;
-        SceneManager.LoadScene("Upgrades");
+        GameOverPanel.SetActive(true);
+        Focus = false;
 
+        Time.timeScale = 0f;
+    }
+
+    public void GoToUpgrade()
+    {
+        SceneManager.LoadScene("Upgrades");
     }
 
     private IEnumerator PassTime()
