@@ -46,6 +46,7 @@ public class UpgradesSliders : MonoBehaviour
     private int numberOfUpgrades;
     private int previewUpgradeValue;
     private float topFillTime;
+    private bool isApplying;
 
 
     public void OnDisable()
@@ -77,6 +78,8 @@ public class UpgradesSliders : MonoBehaviour
 
         if (iconSprite != null) { icon.sprite = iconSprite; }
         else { icon.gameObject.SetActive(false); }
+
+        isApplying = false;
 
         placeSiderBars();
         setAllColors();
@@ -170,6 +173,7 @@ public class UpgradesSliders : MonoBehaviour
     public void applyUpgardes()
     {
         Debug.Log("apply upgrades");
+        isApplying = true;
         Debug.Log(upgradeType + " " + previewUpgradeValue);
         upgradesManager.setUpgradeValue(upgradeType, previewUpgradeValue);
         setButtonsActive(false);
@@ -204,7 +208,9 @@ public class UpgradesSliders : MonoBehaviour
     // Buttons management
     public void checkNextUpgrades()
     {
-        if (previewUpgradeValue != numberOfUpgrades)
+
+        if (isApplying) { setButtonsActive(false); }
+        else if (previewUpgradeValue != numberOfUpgrades)
         {
             setPlusButtonActive(upgradesManager.getMoney() - upgradesManager.getTotalCost() - upgradesManager.getUpgradeCost(upgradeType, previewUpgradeValue + 1) >= 0);
 
