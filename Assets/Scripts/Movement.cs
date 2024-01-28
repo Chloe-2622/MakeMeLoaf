@@ -66,8 +66,8 @@ public class Movement : MonoBehaviour
         else rb.drag = 0;
 
         // pour bien marcher dans la pente
-        if(OnSlope()) rb.AddForce(SlopeMoveDir(movement) * speed);
-        else rb.AddForce(movement*speed);
+        if(OnSlope()) rb.AddForce(SlopeMoveDir(movement) * speed * Time.deltaTime);
+        else rb.AddForce(movement*speed*Time.deltaTime);
         rb.velocity = rb.velocity.normalized * Mathf.Clamp(rb.velocity.magnitude, 0, maxSpeed);
         // rb.useGravity = !OnSlope();
 
