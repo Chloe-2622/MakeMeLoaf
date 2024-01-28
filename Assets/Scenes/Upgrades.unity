@@ -2969,47 +2969,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: money
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: babyCalmCosts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: babyCalmFactors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: playerHumorCosts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: clientsMoneyCosts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: furnaceSpeedCosts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: playerHumorFactors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: clientsMoneyFactors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: furnaceSpeedFactors.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: clientsPatienceCosts.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: clientsPatienceFactors.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7696785658038010204, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: m_Name

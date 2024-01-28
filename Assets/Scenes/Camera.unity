@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -458,10 +458,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -522,8 +522,8 @@ GameObject:
   m_Component:
   - component: {fileID: 546289846}
   - component: {fileID: 546289845}
-  - component: {fileID: 546289844}
   - component: {fileID: 546289847}
+  - component: {fileID: 546289848}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -531,26 +531,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &546289844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546289843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &546289845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +588,36 @@ MonoBehaviour:
   - {fileID: 8401351918548784738, guid: 820c68cba22fded4ab65c7bca5c99a84, type: 3}
   - {fileID: 8401351918548784738, guid: 6aeb9edad3411fc4ab798fd2e327e748, type: 3}
   - {fileID: 8401351918548784738, guid: c1f0e09b16df1d840acead10f3facb85, type: 3}
+--- !u!114 &546289848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546289843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &626512303 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8493523502538978855, guid: 9ab6f3869cd286e45910ffa9837ce2b6, type: 3}
@@ -995,6 +1005,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_3
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2148919885972729745, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 273.73837
@@ -1056,115 +1078,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
---- !u!1 &1473137704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2664551176364917591, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1473137706}
-  - component: {fileID: 1473137705}
-  m_Layer: 0
-  m_Name: UpgradesManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1473137705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3800540932010624379, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473137704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b1ae9e12b88fd74297265955a36481f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  money: 0
-  totalCost: 0
-  babyCalmFactors:
-  - 0
-  - 0
-  babyCalmCosts: 0000000000000000
-  babyCalm: 0
-  babyCalmTitle: Take this and go play elsewhere
-  babyCalmDescription: The baby takes more time to stress out
-  playerHumorFactors:
-  - 0
-  - 0
-  playerHumorCosts: 0000000000000000
-  playerHumor: 0
-  playerHumorTitle: Comedy lessons
-  playerHumorDescription: Release more stress when interacting with the baby
-  furnaceSpeedFactors:
-  - 0
-  - 0
-  furnaceSpeedCosts: 0000000000000000
-  furnaceSpeed: 0
-  furnaceSpeedTitle: The power of money
-  furnaceSpeedDescription: It's more expenssive, so it cook faster
-  clientsPatienceFactors:
-  - 0
-  - 0
-  clientsPatienceCosts: 0000000000000000
-  clientsPatience: 0
-  clientsPatienceTitle: Society improvement
-  clientsPatienceDescription: Everything would be easier if people knew to be patient
-  clientsMoneyFactors:
-  - 0
-  - 20
-  - 50
-  clientsMoneyCosts: 000000001400000032000000
-  clientsMoney: 0
-  clientsMoneyTitle: Inflation
-  clientsMoneyDescription: 
-  toysCost: 0
-  toys: 0
-  toysTitle: Toys
-  toysDescription: Item that can attract your baby during a certain amount of time
-  camera_1Cost: 0
-  camera_1: 1
-  camera_1Title: Store camera
-  camera_1Description: Place a camera in the store
-  camera_2Cost: 0
-  camera_2: 1
-  camera_2Title: Kitchen camera
-  camera_2Description: Place a camera in the kitchen
-  camera_3Cost: 0
-  camera_3: 1
-  camera_3Title: Storage camera
-  camera_3Description: Place a camera in the storage
-  bellCost: 0
-  bell: 0
-  bellTitle: Bell
-  bellDescription: 
-  tabletCost: 0
-  tablet: 0
-  tabletTitle: Tablet
-  tabletDescription: 
-  costUpdateEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1473137706
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2148919885972729745, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-  m_PrefabInstance: {fileID: 1295201245}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473137704}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 273.73837, y: 701.0835, z: -447.6239}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1537400838
 GameObject:
   m_ObjectHideFlags: 0
