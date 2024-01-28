@@ -42,7 +42,8 @@ public class UseMachine : MonoBehaviour
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
          && hit.transform.parent != null && hit.transform.parent.TryGetComponent<Craft>(out machine))
         {
-            machine.MakeCraft();
+            StartCoroutine(machine.MakeCraft());
+            Debug.Log("t1");
         }
     }
 }

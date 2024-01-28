@@ -337,7 +337,10 @@ public class UpgradesManager : MonoBehaviour
     // Money
     public int getMoney() { return money; }
 
-    public void addToCostToPay(int costDelta) { totalCost += costDelta; costUpdateEvent.Invoke(); }
+    public void addMoney(int moneyDelta) { money += moneyDelta;}
+
+    public void addToCostToPay(int costDelta) {  totalCost += costDelta; costUpdateEvent.Invoke(); }
+
 
     public int getTotalCost() { return totalCost; }
 
@@ -357,7 +360,7 @@ public class UpgradesManager : MonoBehaviour
     // Get factors
     public float getBabyCalmFactor() { return babyCalmFactors[babyCalm]; }
     public float getPlayerHumorFactor() { return playerHumorFactors[playerHumor]; }
-    public float getfurnaceSppedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
+    public float getfurnaceSpeedFactor() { return furnaceSpeedFactors[furnaceSpeed]; }
     public float getClientsPatienceFactor() { return clientsPatienceFactors[clientsPatience]; }
     public float getClientsMoneyFactor() { return clientsMoneyFactors[clientsMoney]; }
 

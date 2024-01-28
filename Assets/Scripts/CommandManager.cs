@@ -36,7 +36,7 @@ public class CommandManager : MonoBehaviour
     private Command[] commands;
     private int currentCommands = 0;
 
-    [SerializeField] private string[] productNames = {"Pain aux céréales", "Baguette", "Pain de mie", "Eclair", "Croissant", "Pain au chocolat"};
+    [SerializeField] private string[] productNames = { "Pain complet", "Baguette", "Pain de mie", "Éclair au chocolat", "Croissant", "Pain au chocolat" };
 
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTexts;
     [SerializeField] private TMPro.TextMeshProUGUI[] commandTimes;
@@ -199,9 +199,13 @@ public class CommandManager : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        int hours = (int)(currentDayTime / (dayEndHour - dayStartHour) + dayStartHour);
-        int min = (int)(((currentDayTime / (dayEndHour - dayStartHour) + dayStartHour) - hours) * 60.0f);
+        int timeOfDay = GameManager.Instance.timeOfDay;
+
+        int hours = dayStartHour + timeOfDay / 60;
+        int min = timeOfDay % 60;
         dayTimeText.text = hours.ToString("00") + ":" + min.ToString("00");
+
+        moneyText.text = UpgradesManager.Instance?.getMoney().ToString() + "€";
 
         for (int i = 0; i < commands.Length; i++)
         {
@@ -217,6 +221,56 @@ public class CommandManager : MonoBehaviour
                 commandTexts[i].text = "";
                 commandTimes[i].text = "";
             }
+        }
+    }
+
+    public void TryToSell(Selectable selectable)
+    {
+        float earnedMoney = 0;
+        Product expectedProduct = Product.NONE;
+        switch (selectable.label)
+        {
+            case "Éclair au chocolat":
+                earnedMoney = 200f;
+                expectedProduct = Product.ECLAIR;
+                break;
+            case "Croissant":
+                earnedMoney = 100f;
+                expectedProduct = Product.CROISSANT;
+                break;
+            case "Pain au chocolat":
+                earnedMoney = 150f;
+                expectedProduct = Product.PAIN_CHOCOLAT;    
+                break;
+            case "Pain complet":
+                earnedMoney = 90f;
+                expectedProduct = Product.PAIN_CEREAL;
+                break;
+            case "Pain de mie":
+                earnedMoney = 70f;
+                expectedProduct = Product.PAIN_DE_MIE;
+                break;
+            case "Baguette":
+                earnedMoney = 50f;
+                expectedProduct = Product.BAGUETTE;
+                break;
+
+        }
+
+        if(earnedMoney > 0)
+        {
+            for(int i = 0; i < commands.Length; i++)
+            {
+                if (commands[i].product == expectedProduct)
+                {
+                    ClearCommand(i);
+                    UpgradesManager.Instance.addMoney((int)earnedMoney);
+                    Select.instance.ResetSelection();
+                    Destroy(selectable.gameObject);
+                    break;
+                }
+            }
+
         }
     }
 }
