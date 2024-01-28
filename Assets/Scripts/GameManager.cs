@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,17 +27,30 @@ public class GameManager : MonoBehaviour
     public GameObject TimeUI;
 
 
+    [Header("Upgrades")]
+    public float babyCalm;
+    public float playerHumor;
+    public float furnaceSpeed;
+    public float clientPatience;
+    public float clientMoney;
+    public bool isToyAvailable;
+    public bool isCamera1Available;
+    public bool isCamera2Available;
+    public bool isCamera3Available;
+    public bool isBellAvailable;
+    public bool isTabletAvailable;
+
+
+    private UpgradesManager upgradeManager;
 
     // Instance statique du GameManager
     public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
-
-
-
-
         //baby = GameObject.Find("Baby");
+
+        upgradeManager = UpgradesManager.Instance;
 
         TimeUI.GetComponent<TextMeshProUGUI>().text = "08 : 00";
 
@@ -50,19 +64,35 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject); // Détruisez les doublons
         }
 
+        if (timeOfDay == 720)
+        {
+            EndDay();
+        }
 
-        //StartCoroutine(PassTime());
+
+        StartCoroutine(PassTime());
         hasDayStarted = true;
 
         Time.timeScale = debugTimeScale;
     }
 
+    // Get deds upgrades du Upgrade Manager
     private void GetUpgrades()
     {
+        babyCalm = upgradeManager.getBabyCalmFactor();
+        playerHumor = upgradeManager.getPlayerHumorFactor();
+        furnaceSpeed = upgradeManager.getfurnaceSpeedFactor();
+        clientPatience = upgradeManager.getClientsPatienceFactor();
+        clientMoney = upgradeManager.getClientsMoneyFactor();
+        isToyAvailable = upgradeManager.isToysAvailable();
+        isCamera1Available = upgradeManager.isCamera_1Available();
+        isCamera2Available = upgradeManager.isCamera_2Available();
+        isCamera3Available = upgradeManager.isCamera_3Available();
+        isBellAvailable = upgradeManager.isBellAvailable();
+        isTabletAvailable = upgradeManager.isTabletAvailable();
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (hasDayStarted && !isTimePassing)
@@ -70,6 +100,13 @@ public class GameManager : MonoBehaviour
             // StartCoroutine(PassTime());
             isTimePassing = true;
         }
+    }
+
+    private void EndDay()
+    {
+        hasDayEnded = true;
+        SceneManager.LoadScene("Upgrades");
+
     }
 
     private IEnumerator PassTime()
@@ -81,13 +118,13 @@ public class GameManager : MonoBehaviour
             timeOfDay += minutesPerSecond;
             if (i % 2 == 0)
             {
-                TimeUI.GetComponent<TextMeshProUGUI>().text = (8 + timeOfDay / 60).ToString("D2") + ":" + (timeOfDay % 60).ToString("D2");
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + ":" + (timeOfDay % 60).ToString("D2");
             } else
             {
-                TimeUI.GetComponent<TextMeshProUGUI>().text = (8 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
+                TimeUI.GetComponent<TextMeshProUGUI>().text = (6 + timeOfDay / 60).ToString("D2") + " " + (timeOfDay % 60).ToString("D2");
             }
             i++;
-            baby.GetComponent<Baby>().AddFrustration(frustration_time_factor * minutesPerSecond);
+            baby.GetComponent<Baby>().AddFrustration(babyCalm * minutesPerSecond);
             yield return new WaitForSeconds(1);
         }
         

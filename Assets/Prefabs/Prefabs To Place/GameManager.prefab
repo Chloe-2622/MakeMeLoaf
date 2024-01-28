@@ -51,4 +51,6 @@ MonoBehaviour:
   isTimePassing: 0
   playerRange: 2
   minutesPerSecond: 0
-  frustration_time_factor: 0
+  frustration_time_factor: 0.01666667
+  debugTimeScale: 0
+  TimeUI: {fileID: 0}
