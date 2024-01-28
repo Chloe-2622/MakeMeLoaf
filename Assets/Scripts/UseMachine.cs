@@ -37,7 +37,7 @@ public class UseMachine : MonoBehaviour
     {
     }
 
-    private void UseAction(InputAction.CallbackContext contect)
+    private void UseAction(InputAction.CallbackContext context)
     {
         if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, gM.playerRange)
          && hit.transform.parent != null && hit.transform.parent.TryGetComponent<Craft>(out machine))
