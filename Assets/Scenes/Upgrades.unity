@@ -1219,8 +1219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2970,6 +2970,14 @@ PrefabInstance:
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: money
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_2Cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
+      propertyPath: camera_3Cost
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7696785658038010204, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: m_Name
