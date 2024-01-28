@@ -83,7 +83,7 @@ public class UpgradesButtons : MonoBehaviour
         Debug.Log("apply upgrades");
         upgradesManager.buy(upgradeType, isPreviewOn || alreadyBought);
         button.interactable = false;
-        alreadyBought = true;
+        if (isPreviewOn) { alreadyBought = true; }
         setButtonColor();
     }
 

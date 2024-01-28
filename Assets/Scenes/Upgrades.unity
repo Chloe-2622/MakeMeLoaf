@@ -515,6 +515,10 @@ PrefabInstance:
       value: Camera_2 Button
       objectReference: {fileID: 0}
     - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17ecdd865957e4945a938cf2ec4b1f45, type: 3}
+    - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
       propertyPath: upgradeType
       value: 2
       objectReference: {fileID: 0}
@@ -1867,6 +1871,10 @@ PrefabInstance:
       value: Camera_3 Button
       objectReference: {fileID: 0}
     - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17ecdd865957e4945a938cf2ec4b1f45, type: 3}
+    - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
       propertyPath: upgradeType
       value: 3
       objectReference: {fileID: 0}
@@ -2752,6 +2760,10 @@ PrefabInstance:
       value: Camera_1 Button
       objectReference: {fileID: 0}
     - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17ecdd865957e4945a938cf2ec4b1f45, type: 3}
+    - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
       propertyPath: upgradeType
       value: 1
       objectReference: {fileID: 0}
@@ -2969,14 +2981,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
       propertyPath: money
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: camera_2Cost
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 315817755284346082, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
-      propertyPath: camera_3Cost
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7696785658038010204, guid: 192e6f861a56084458e81aab479e68e6, type: 3}
