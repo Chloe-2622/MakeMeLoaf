@@ -54,8 +54,7 @@ public class UIController : MonoBehaviour
 
     public void StartAction()
     {
-        SettingsMenu.SetActive(false);
-        MainMenu.SetActive(false);
+        SceneManager.LoadScene("Game");
     }
 
     public void QuitAction()
