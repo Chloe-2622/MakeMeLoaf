@@ -81,6 +81,7 @@ public class Baby : MonoBehaviour
     [SerializeField] private AudioSource gameMusic0;
     [SerializeField] private AudioSource gameMusic1;
     [SerializeField] private AudioSource gameMusic2;
+    [SerializeField] private AudioSource rire;
 
     [Header("Scene objects")]
     [SerializeField] private LayerMask bebeMask;
@@ -135,7 +136,7 @@ public class Baby : MonoBehaviour
             cryStat2 = 1f;
             cryStat3 = 1f;
 
-            gameManager.minutesPerSecond = 10;
+            gameManager.minutesPerSecond = 50;
         }
     }
 
@@ -160,6 +161,11 @@ public class Baby : MonoBehaviour
 
         babyImage.transform.localPosition = Vector3.Lerp(new Vector3(-babyBarMinX/2, 0, 0), new Vector3(babyBarMinX/2, 0, 0), frustration_factor / 0.8f);
 
+
+        if (frustration_factor >= 0.8 && !gameManager.hasDayEnded)
+        {
+            gameManager.EndDay();
+        }
     }
 
     private void BabyAnimator()
@@ -299,6 +305,7 @@ public class Baby : MonoBehaviour
         gameMusic1.Stop();
         gameMusic2.Stop();
         gameMusic0.Play();
+        rire.Play();
 
         yield return null;
     }
@@ -478,4 +485,5 @@ public class Baby : MonoBehaviour
         // Ensure the final rotation is the target rotation
         transform.rotation = targetRotation;
     }
+
 }
