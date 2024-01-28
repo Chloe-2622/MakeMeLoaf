@@ -192,6 +192,24 @@ public class Craft : MonoBehaviour
             case "pate_choux":
                 Instantiate(pate_chouxPref, transform.position + Vector3.up, Quaternion.identity);
                 return;
+            case "pain_c_cru":
+                Instantiate(pain_c_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+            case "pain_b_cru":
+                Instantiate(pain_b_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+            case "pain_m_cru":
+                Instantiate(pain_m_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+            case "pain_chocolat_cru":
+                Instantiate(pain_choco_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+            case "eclaire_cru":
+                Instantiate(eclair_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
+            case "croissant_cru":
+                Instantiate(croissant_cruPref, transform.position + Vector3.up, Quaternion.identity);
+                return;
 
         }
     }
