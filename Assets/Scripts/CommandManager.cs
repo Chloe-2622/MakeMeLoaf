@@ -116,8 +116,10 @@ public class CommandManager : MonoBehaviour
             yield return null;
         }
 
+        Debug.Log("Fin de journée0");
         //End of the day wait 5 seconds and call EndDay
         yield return new WaitForSeconds(5.0f);
+        Debug.Log("Fin de journée1");
         EndDay();
 
 

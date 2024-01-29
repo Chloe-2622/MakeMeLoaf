@@ -100,9 +100,11 @@ public class Baby : MonoBehaviour
 
     private void Awake()
     {
+        
         total_frustration = 1f;
 
         gameManager = GameManager.Instance;
+        gameManager.isBabyAngry = false;
         babyAnimator = transform.Find("Model").GetComponent<Animator>();
         outline = GetComponent<Outline>();
         outline.enabled = false;
@@ -157,6 +159,7 @@ public class Baby : MonoBehaviour
 
         if (frustration_factor >= 0.8 && !gameManager.hasDayEnded)
         {
+            gameManager.isBabyAngry = true;
             gameManager.EndDay();
         }
 

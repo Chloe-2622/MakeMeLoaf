@@ -28,6 +28,8 @@ public class UpgradesMenu : MonoBehaviour
 
     public void OnEnable()
     {
+        Time.timeScale = 1;
+
         upgradesManager = UpgradesManager.Instance;
 
         upgradesManager.costUpdateEvent.AddListener(showGoldAndCost);
@@ -68,7 +70,7 @@ public class UpgradesMenu : MonoBehaviour
         foreach(UpgradesSliders slider in slidersList) { slider.applyUpgardes(); }
         foreach(UpgradesButtons button in buttonsList) { button.applyUpgardes(); }
         upgradesManager.deduceCost();
-
+        Debug.Log("Start closing upgrades");
         StartCoroutine(WaitTillSlidersEnd());
     }
 
@@ -90,7 +92,9 @@ public class UpgradesMenu : MonoBehaviour
 
     public IEnumerator WaitTillSlidersEnd()
     {
-        yield return new WaitForSeconds(1.5f);
+        Debug.Log("retour en jeu1");
+        yield return new WaitForSecondsRealtime(1.5f);
+        Debug.Log("retour en jeu");
         SceneManager.LoadScene("Game");
     }
 }
