@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject TimeUI;
     public GameObject GameOverPanel;
+    public GameObject DayEndedPanel;
 
     public bool Focus;
 
@@ -43,7 +44,7 @@ public class GameManager : MonoBehaviour
     public bool isBellAvailable;
     public bool isTabletAvailable;
 
-
+    public bool isBabyAngry;
     private UpgradesManager upgradeManager;
 
     // Instance statique du GameManager
@@ -109,11 +110,23 @@ public class GameManager : MonoBehaviour
 
     public void EndDay()
     {
-        hasDayEnded = true;
-        GameOverPanel.SetActive(true);
-        Focus = false;
+        if (isBabyAngry)
+        {
+            hasDayEnded = true;
+            GameOverPanel.SetActive(true);
+            Focus = false;
 
-        Time.timeScale = 0f;
+            Time.timeScale = 0f;
+        } else
+        {
+            hasDayEnded = true;
+            DayEndedPanel.SetActive(true);
+            Focus = false;
+
+            Time.timeScale = 0f;
+        }
+
+        
     }
 
     public void GoToUpgrade()
