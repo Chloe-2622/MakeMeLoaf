@@ -1762,6 +1762,10 @@ PrefabInstance:
       value: Bell Button
       objectReference: {fileID: 0}
     - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
+      propertyPath: iconSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5e3b54627b19f1046bdb97ecc7b1c632, type: 3}
+    - target: {fileID: 7046922063990413256, guid: 6e29036bf96ce2c4380e9e10f0d428e0, type: 3}
       propertyPath: upgradeType
       value: 4
       objectReference: {fileID: 0}

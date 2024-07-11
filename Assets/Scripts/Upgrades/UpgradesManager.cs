@@ -36,7 +36,7 @@ public class UpgradesManager : MonoBehaviour
     [SerializeField] private string babyCalmTitle;
     [SerializeField] private string babyCalmDescription;
 
-    [Header("Playe rHumor")]
+    [Header("Player Humor")]
     [SerializeField] private List<float> playerHumorFactors;
     [SerializeField] private List<int> playerHumorCosts;
     [SerializeField] private int playerHumor = 0;
